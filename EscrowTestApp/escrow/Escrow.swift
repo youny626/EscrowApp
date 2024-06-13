@@ -14,14 +14,16 @@ enum ServerType {
     case standard
 }
 
-class Escrow : NSObject {
+@MainActor
+class Escrow: NSObject {
     
     static let shared = Escrow()
     
     private let database: Database
     let connection: Connection
     
-    var escrowLocationManager = CLLocationManager()
+    let escrowLocationManager = CLLocationManager()
+//    var escrowLocationManager = EscrowLocationManager()
     
     //    private let GRPC_Client: RunAsyncClient
     
@@ -30,17 +32,16 @@ class Escrow : NSObject {
     //    private var loadDataDict: [String : [[String] : loadDataFunctionType]] = [:]
     //    private var loadDataDict: [String : [String : loadDataFunctionType]] = [:]
     
-    private override init() {
+    override init() {
         do {
             //            self.GRPC_Client = try self.createClient()
             
             self.database = try Database(store: .inMemory)
             self.connection = try database.connect()
-                        
+                                    
             super.init()
 
             self.initDB()
-
 
         } catch {
             print(error)
@@ -48,6 +49,10 @@ class Escrow : NSObject {
         }
     }
     
+//    deinit {
+//        escrowLocationManager.stopUpdatingLocation()
+//    }
+//    
     private func initDB() {
         initContactTable()
         initPhotoTable()
@@ -79,7 +84,9 @@ class Escrow : NSObject {
         let (col_names, table_name) = try parse_names(query)
         
 //        if table_name == "Location" {
-//            shared.escrowLocationManager.requestLocation()
+////            shared.escrowLocationManager.locationManager.requestLocation()
+//            shared.insertLocations(shared.escrowLocationManager.locations)
+////            await shared.insertCurrentLocation()
 //        }
         
         //        print("col_names: \(col_names)")
@@ -131,7 +138,7 @@ class Escrow : NSObject {
             
             for col in result {
                 
-                print("Processing col: \(col)")
+//                print("Processing col: \(col)")
                 
                 // Convert duckdb data type to native swift data type in order to construct the result columns
                 

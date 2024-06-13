@@ -30,6 +30,8 @@
 		432D3D6B2C1ACA2000DE8B92 /* pom.xml in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D532C1ACA2000DE8B92 /* pom.xml */; };
 		432D3D6C2C1ACA2000DE8B92 /* SQLiteLexer.g4 in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D542C1ACA2000DE8B92 /* SQLiteLexer.g4 */; };
 		432D3D6D2C1ACA2000DE8B92 /* SQLiteParser.g4 in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D552C1ACA2000DE8B92 /* SQLiteParser.g4 */; };
+		432D3D6F2C1AD8D800DE8B92 /* EscrowContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D3D6E2C1AD8D800DE8B92 /* EscrowContentView.swift */; };
+		432D3D732C1AFA0A00DE8B92 /* SwiftLocation in Frameworks */ = {isa = PBXBuildFile; productRef = 432D3D722C1AFA0A00DE8B92 /* SwiftLocation */; };
 		438C3C852C1A8EB200B48029 /* EscrowTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3C842C1A8EB200B48029 /* EscrowTestApp.swift */; };
 		438C3C872C1A8EB200B48029 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3C862C1A8EB200B48029 /* ContentView.swift */; };
 		438C3C892C1A8EB300B48029 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 438C3C882C1A8EB300B48029 /* Assets.xcassets */; };
@@ -74,6 +76,8 @@
 		432D3D532C1ACA2000DE8B92 /* pom.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = pom.xml; sourceTree = "<group>"; };
 		432D3D542C1ACA2000DE8B92 /* SQLiteLexer.g4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SQLiteLexer.g4; sourceTree = "<group>"; };
 		432D3D552C1ACA2000DE8B92 /* SQLiteParser.g4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SQLiteParser.g4; sourceTree = "<group>"; };
+		432D3D6E2C1AD8D800DE8B92 /* EscrowContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscrowContentView.swift; sourceTree = "<group>"; };
+		432D3D702C1AF81C00DE8B92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		438C3C812C1A8EB200B48029 /* EscrowTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EscrowTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		438C3C842C1A8EB200B48029 /* EscrowTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscrowTestApp.swift; sourceTree = "<group>"; };
 		438C3C862C1A8EB200B48029 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 				438C3C972C1AC61900B48029 /* GRPC in Frameworks */,
 				438C3C9A2C1AC6C300B48029 /* Antlr4 in Frameworks */,
 				438C3CA42C1AC71C00B48029 /* DuckDB in Frameworks */,
+				432D3D732C1AFA0A00DE8B92 /* SwiftLocation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,12 +189,14 @@
 		438C3C832C1A8EB200B48029 /* EscrowTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				432D3D702C1AF81C00DE8B92 /* Info.plist */,
 				438C3C842C1A8EB200B48029 /* EscrowTestApp.swift */,
 				438C3C862C1A8EB200B48029 /* ContentView.swift */,
 				438C3C882C1A8EB300B48029 /* Assets.xcassets */,
 				438C3C8A2C1A8EB300B48029 /* EscrowTestApp.entitlements */,
 				438C3C8B2C1A8EB300B48029 /* Preview Content */,
 				438C3C932C1A8EFE00B48029 /* LocationManager.swift */,
+				432D3D6E2C1AD8D800DE8B92 /* EscrowContentView.swift */,
 			);
 			path = EscrowTestApp;
 			sourceTree = "<group>";
@@ -259,6 +266,7 @@
 				438C3C962C1AC61900B48029 /* GRPC */,
 				438C3C992C1AC6C300B48029 /* Antlr4 */,
 				438C3CA32C1AC71C00B48029 /* DuckDB */,
+				432D3D722C1AFA0A00DE8B92 /* SwiftLocation */,
 			);
 			productName = EscrowTestApp;
 			productReference = 438C3C812C1A8EB200B48029 /* EscrowTestApp.app */;
@@ -293,6 +301,7 @@
 				438C3C982C1AC6C300B48029 /* XCRemoteSwiftPackageReference "antlr4" */,
 				438C3C9F2C1AC6DB00B48029 /* XCLocalSwiftPackageReference "../antlr4-swift" */,
 				438C3CA22C1AC71C00B48029 /* XCRemoteSwiftPackageReference "duckdb-swift" */,
+				432D3D712C1AFA0A00DE8B92 /* XCRemoteSwiftPackageReference "SwiftLocation" */,
 			);
 			productRefGroup = 438C3C822C1A8EB200B48029 /* Products */;
 			projectDirPath = "";
@@ -348,6 +357,7 @@
 				432D3D662C1ACA2000DE8B92 /* SQLiteParserBaseListener.swift in Sources */,
 				432D3D612C1ACA2000DE8B92 /* SQLiteLexer.swift in Sources */,
 				438C3CD52C1AC79D00B48029 /* contact.swift in Sources */,
+				432D3D6F2C1AD8D800DE8B92 /* EscrowContentView.swift in Sources */,
 				432D3D682C1ACA2000DE8B92 /* SQLiteParserListener.swift in Sources */,
 				438C3C852C1A8EB200B48029 /* EscrowTestApp.swift in Sources */,
 				438C3C942C1A8EFE00B48029 /* LocationManager.swift in Sources */,
@@ -488,7 +498,10 @@
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EscrowTestApp/Info.plist;
+				INFOPLIST_KEY_NSContactsUsageDescription = "Get contacts";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Get location";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Get photos";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -528,7 +541,10 @@
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EscrowTestApp/Info.plist;
+				INFOPLIST_KEY_NSContactsUsageDescription = "Get contacts";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Get location";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Get photos";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -585,6 +601,14 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		432D3D712C1AFA0A00DE8B92 /* XCRemoteSwiftPackageReference "SwiftLocation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/malcommac/SwiftLocation.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		438C3C952C1AC61900B48029 /* XCRemoteSwiftPackageReference "grpc-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/grpc/grpc-swift.git";
@@ -612,6 +636,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		432D3D722C1AFA0A00DE8B92 /* SwiftLocation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 432D3D712C1AFA0A00DE8B92 /* XCRemoteSwiftPackageReference "SwiftLocation" */;
+			productName = SwiftLocation;
+		};
 		438C3C962C1AC61900B48029 /* GRPC */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 438C3C952C1AC61900B48029 /* XCRemoteSwiftPackageReference "grpc-swift" */;

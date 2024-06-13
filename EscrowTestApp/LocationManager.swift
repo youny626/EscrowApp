@@ -36,7 +36,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         default: return "unknown"
         }
     }
-    
+        
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
         fatalError(error.localizedDescription)
     }
