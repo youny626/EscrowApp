@@ -3,23 +3,95 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		438C3C852C1A8EB200B48029 /* EscrowTestAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3C842C1A8EB200B48029 /* EscrowTestAppApp.swift */; };
+		432D3D572C1ACA2000DE8B92 /* alter-table-drop-column.sql in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D3D2C1ACA2000DE8B92 /* alter-table-drop-column.sql */; };
+		432D3D582C1ACA2000DE8B92 /* frame_spec_2937.sql in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D3E2C1ACA2000DE8B92 /* frame_spec_2937.sql */; };
+		432D3D592C1ACA2000DE8B92 /* null_test.sql in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D3F2C1ACA2000DE8B92 /* null_test.sql */; };
+		432D3D5A2C1ACA2000DE8B92 /* returning.sql in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D402C1ACA2000DE8B92 /* returning.sql */; };
+		432D3D5B2C1ACA2000DE8B92 /* sql1.sql in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D412C1ACA2000DE8B92 /* sql1.sql */; };
+		432D3D5C2C1ACA2000DE8B92 /* sql2.sql in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D422C1ACA2000DE8B92 /* sql2.sql */; };
+		432D3D5D2C1ACA2000DE8B92 /* sql3.sql in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D432C1ACA2000DE8B92 /* sql3.sql */; };
+		432D3D5E2C1ACA2000DE8B92 /* values.sql in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D442C1ACA2000DE8B92 /* values.sql */; };
+		432D3D5F2C1ACA2000DE8B92 /* WindowsFunctionsForSqLite.sql in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D452C1ACA2000DE8B92 /* WindowsFunctionsForSqLite.sql */; };
+		432D3D602C1ACA2000DE8B92 /* SQLiteLexer.interp in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D472C1ACA2000DE8B92 /* SQLiteLexer.interp */; };
+		432D3D612C1ACA2000DE8B92 /* SQLiteLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D3D482C1ACA2000DE8B92 /* SQLiteLexer.swift */; };
+		432D3D622C1ACA2000DE8B92 /* SQLiteLexer.tokens in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D492C1ACA2000DE8B92 /* SQLiteLexer.tokens */; };
+		432D3D632C1ACA2000DE8B92 /* SQLiteParser.interp in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D4A2C1ACA2000DE8B92 /* SQLiteParser.interp */; };
+		432D3D642C1ACA2000DE8B92 /* SQLiteParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D3D4B2C1ACA2000DE8B92 /* SQLiteParser.swift */; };
+		432D3D652C1ACA2000DE8B92 /* SQLiteParser.tokens in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D4C2C1ACA2000DE8B92 /* SQLiteParser.tokens */; };
+		432D3D662C1ACA2000DE8B92 /* SQLiteParserBaseListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D3D4D2C1ACA2000DE8B92 /* SQLiteParserBaseListener.swift */; };
+		432D3D672C1ACA2000DE8B92 /* SQLiteParserBaseVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D3D4E2C1ACA2000DE8B92 /* SQLiteParserBaseVisitor.swift */; };
+		432D3D682C1ACA2000DE8B92 /* SQLiteParserListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D3D4F2C1ACA2000DE8B92 /* SQLiteParserListener.swift */; };
+		432D3D692C1ACA2000DE8B92 /* SQLiteParserVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D3D502C1ACA2000DE8B92 /* SQLiteParserVisitor.swift */; };
+		432D3D6A2C1ACA2000DE8B92 /* desc.xml in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D522C1ACA2000DE8B92 /* desc.xml */; };
+		432D3D6B2C1ACA2000DE8B92 /* pom.xml in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D532C1ACA2000DE8B92 /* pom.xml */; };
+		432D3D6C2C1ACA2000DE8B92 /* SQLiteLexer.g4 in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D542C1ACA2000DE8B92 /* SQLiteLexer.g4 */; };
+		432D3D6D2C1ACA2000DE8B92 /* SQLiteParser.g4 in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D552C1ACA2000DE8B92 /* SQLiteParser.g4 */; };
+		438C3C852C1A8EB200B48029 /* EscrowTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3C842C1A8EB200B48029 /* EscrowTestApp.swift */; };
 		438C3C872C1A8EB200B48029 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3C862C1A8EB200B48029 /* ContentView.swift */; };
 		438C3C892C1A8EB300B48029 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 438C3C882C1A8EB300B48029 /* Assets.xcassets */; };
 		438C3C8D2C1A8EB300B48029 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 438C3C8C2C1A8EB300B48029 /* Preview Assets.xcassets */; };
+		438C3C942C1A8EFE00B48029 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3C932C1A8EFE00B48029 /* LocationManager.swift */; };
+		438C3C972C1AC61900B48029 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 438C3C962C1AC61900B48029 /* GRPC */; };
+		438C3C9A2C1AC6C300B48029 /* Antlr4 in Frameworks */ = {isa = PBXBuildFile; productRef = 438C3C992C1AC6C300B48029 /* Antlr4 */; };
+		438C3CA42C1AC71C00B48029 /* DuckDB in Frameworks */ = {isa = PBXBuildFile; productRef = 438C3CA32C1AC71C00B48029 /* DuckDB */; };
+		438C3CD12C1AC79D00B48029 /* wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3CA52C1AC79D00B48029 /* wrapper.swift */; };
+		438C3CD22C1AC79D00B48029 /* run.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3CA72C1AC79D00B48029 /* run.grpc.swift */; };
+		438C3CD32C1AC79D00B48029 /* run.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3CA82C1AC79D00B48029 /* run.pb.swift */; };
+		438C3CD52C1AC79D00B48029 /* contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3CAB2C1AC79D00B48029 /* contact.swift */; };
+		438C3CD62C1AC79D00B48029 /* Escrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3CAD2C1AC79D00B48029 /* Escrow.swift */; };
+		438C3CD72C1AC79D00B48029 /* Listener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3CAF2C1AC79D00B48029 /* Listener.swift */; };
+		438C3CD82C1AC79D00B48029 /* location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3CB02C1AC79D00B48029 /* location.swift */; };
+		438C3CDA2C1AC79D00B48029 /* photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3CB22C1AC79D00B48029 /* photo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		432D3D382C1ACA1600DE8B92 /* CustomType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomType.swift; sourceTree = "<group>"; };
+		432D3D392C1ACA1600DE8B92 /* main_bak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main_bak.swift; sourceTree = "<group>"; };
+		432D3D3D2C1ACA2000DE8B92 /* alter-table-drop-column.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "alter-table-drop-column.sql"; sourceTree = "<group>"; };
+		432D3D3E2C1ACA2000DE8B92 /* frame_spec_2937.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frame_spec_2937.sql; sourceTree = "<group>"; };
+		432D3D3F2C1ACA2000DE8B92 /* null_test.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = null_test.sql; sourceTree = "<group>"; };
+		432D3D402C1ACA2000DE8B92 /* returning.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = returning.sql; sourceTree = "<group>"; };
+		432D3D412C1ACA2000DE8B92 /* sql1.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sql1.sql; sourceTree = "<group>"; };
+		432D3D422C1ACA2000DE8B92 /* sql2.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sql2.sql; sourceTree = "<group>"; };
+		432D3D432C1ACA2000DE8B92 /* sql3.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sql3.sql; sourceTree = "<group>"; };
+		432D3D442C1ACA2000DE8B92 /* values.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = values.sql; sourceTree = "<group>"; };
+		432D3D452C1ACA2000DE8B92 /* WindowsFunctionsForSqLite.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WindowsFunctionsForSqLite.sql; sourceTree = "<group>"; };
+		432D3D472C1ACA2000DE8B92 /* SQLiteLexer.interp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SQLiteLexer.interp; sourceTree = "<group>"; };
+		432D3D482C1ACA2000DE8B92 /* SQLiteLexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteLexer.swift; sourceTree = "<group>"; };
+		432D3D492C1ACA2000DE8B92 /* SQLiteLexer.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SQLiteLexer.tokens; sourceTree = "<group>"; };
+		432D3D4A2C1ACA2000DE8B92 /* SQLiteParser.interp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SQLiteParser.interp; sourceTree = "<group>"; };
+		432D3D4B2C1ACA2000DE8B92 /* SQLiteParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteParser.swift; sourceTree = "<group>"; };
+		432D3D4C2C1ACA2000DE8B92 /* SQLiteParser.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SQLiteParser.tokens; sourceTree = "<group>"; };
+		432D3D4D2C1ACA2000DE8B92 /* SQLiteParserBaseListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteParserBaseListener.swift; sourceTree = "<group>"; };
+		432D3D4E2C1ACA2000DE8B92 /* SQLiteParserBaseVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteParserBaseVisitor.swift; sourceTree = "<group>"; };
+		432D3D4F2C1ACA2000DE8B92 /* SQLiteParserListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteParserListener.swift; sourceTree = "<group>"; };
+		432D3D502C1ACA2000DE8B92 /* SQLiteParserVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteParserVisitor.swift; sourceTree = "<group>"; };
+		432D3D522C1ACA2000DE8B92 /* desc.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = desc.xml; sourceTree = "<group>"; };
+		432D3D532C1ACA2000DE8B92 /* pom.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = pom.xml; sourceTree = "<group>"; };
+		432D3D542C1ACA2000DE8B92 /* SQLiteLexer.g4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SQLiteLexer.g4; sourceTree = "<group>"; };
+		432D3D552C1ACA2000DE8B92 /* SQLiteParser.g4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SQLiteParser.g4; sourceTree = "<group>"; };
 		438C3C812C1A8EB200B48029 /* EscrowTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EscrowTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		438C3C842C1A8EB200B48029 /* EscrowTestAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscrowTestAppApp.swift; sourceTree = "<group>"; };
+		438C3C842C1A8EB200B48029 /* EscrowTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscrowTestApp.swift; sourceTree = "<group>"; };
 		438C3C862C1A8EB200B48029 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		438C3C882C1A8EB300B48029 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		438C3C8A2C1A8EB300B48029 /* EscrowTestApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EscrowTestApp.entitlements; sourceTree = "<group>"; };
 		438C3C8C2C1A8EB300B48029 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		438C3C932C1A8EFE00B48029 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		438C3CA52C1AC79D00B48029 /* wrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = wrapper.swift; sourceTree = "<group>"; };
+		438C3CA72C1AC79D00B48029 /* run.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = run.grpc.swift; sourceTree = "<group>"; };
+		438C3CA82C1AC79D00B48029 /* run.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = run.pb.swift; sourceTree = "<group>"; };
+		438C3CA92C1AC79D00B48029 /* run.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = run.proto; sourceTree = "<group>"; };
+		438C3CAB2C1AC79D00B48029 /* contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = contact.swift; sourceTree = "<group>"; };
+		438C3CAC2C1AC79D00B48029 /* escrow.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = escrow.entitlements; sourceTree = "<group>"; };
+		438C3CAD2C1AC79D00B48029 /* Escrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Escrow.swift; sourceTree = "<group>"; };
+		438C3CAF2C1AC79D00B48029 /* Listener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Listener.swift; sourceTree = "<group>"; };
+		438C3CB02C1AC79D00B48029 /* location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = location.swift; sourceTree = "<group>"; };
+		438C3CB12C1AC79D00B48029 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		438C3CB22C1AC79D00B48029 /* photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = photo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,15 +99,75 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				438C3C972C1AC61900B48029 /* GRPC in Frameworks */,
+				438C3C9A2C1AC6C300B48029 /* Antlr4 in Frameworks */,
+				438C3CA42C1AC71C00B48029 /* DuckDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		432D3D3A2C1ACA1600DE8B92 /* bak */ = {
+			isa = PBXGroup;
+			children = (
+				432D3D382C1ACA1600DE8B92 /* CustomType.swift */,
+				432D3D392C1ACA1600DE8B92 /* main_bak.swift */,
+			);
+			path = bak;
+			sourceTree = "<group>";
+		};
+		432D3D462C1ACA2000DE8B92 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				432D3D3D2C1ACA2000DE8B92 /* alter-table-drop-column.sql */,
+				432D3D3E2C1ACA2000DE8B92 /* frame_spec_2937.sql */,
+				432D3D3F2C1ACA2000DE8B92 /* null_test.sql */,
+				432D3D402C1ACA2000DE8B92 /* returning.sql */,
+				432D3D412C1ACA2000DE8B92 /* sql1.sql */,
+				432D3D422C1ACA2000DE8B92 /* sql2.sql */,
+				432D3D432C1ACA2000DE8B92 /* sql3.sql */,
+				432D3D442C1ACA2000DE8B92 /* values.sql */,
+				432D3D452C1ACA2000DE8B92 /* WindowsFunctionsForSqLite.sql */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		432D3D512C1ACA2000DE8B92 /* gen */ = {
+			isa = PBXGroup;
+			children = (
+				432D3D472C1ACA2000DE8B92 /* SQLiteLexer.interp */,
+				432D3D482C1ACA2000DE8B92 /* SQLiteLexer.swift */,
+				432D3D492C1ACA2000DE8B92 /* SQLiteLexer.tokens */,
+				432D3D4A2C1ACA2000DE8B92 /* SQLiteParser.interp */,
+				432D3D4B2C1ACA2000DE8B92 /* SQLiteParser.swift */,
+				432D3D4C2C1ACA2000DE8B92 /* SQLiteParser.tokens */,
+				432D3D4D2C1ACA2000DE8B92 /* SQLiteParserBaseListener.swift */,
+				432D3D4E2C1ACA2000DE8B92 /* SQLiteParserBaseVisitor.swift */,
+				432D3D4F2C1ACA2000DE8B92 /* SQLiteParserListener.swift */,
+				432D3D502C1ACA2000DE8B92 /* SQLiteParserVisitor.swift */,
+			);
+			path = gen;
+			sourceTree = "<group>";
+		};
+		432D3D562C1ACA2000DE8B92 /* sql-parser */ = {
+			isa = PBXGroup;
+			children = (
+				432D3D462C1ACA2000DE8B92 /* examples */,
+				432D3D512C1ACA2000DE8B92 /* gen */,
+				432D3D522C1ACA2000DE8B92 /* desc.xml */,
+				432D3D532C1ACA2000DE8B92 /* pom.xml */,
+				432D3D542C1ACA2000DE8B92 /* SQLiteLexer.g4 */,
+				432D3D552C1ACA2000DE8B92 /* SQLiteParser.g4 */,
+			);
+			name = "sql-parser";
+			path = "EscrowTestApp/escrow/sql-parser";
+			sourceTree = SOURCE_ROOT;
+		};
 		438C3C782C1A8EB200B48029 = {
 			isa = PBXGroup;
 			children = (
+				438C3CB32C1AC79D00B48029 /* escrow */,
 				438C3C832C1A8EB200B48029 /* EscrowTestApp */,
 				438C3C822C1A8EB200B48029 /* Products */,
 			);
@@ -52,11 +184,12 @@
 		438C3C832C1A8EB200B48029 /* EscrowTestApp */ = {
 			isa = PBXGroup;
 			children = (
-				438C3C842C1A8EB200B48029 /* EscrowTestAppApp.swift */,
+				438C3C842C1A8EB200B48029 /* EscrowTestApp.swift */,
 				438C3C862C1A8EB200B48029 /* ContentView.swift */,
 				438C3C882C1A8EB300B48029 /* Assets.xcassets */,
 				438C3C8A2C1A8EB300B48029 /* EscrowTestApp.entitlements */,
 				438C3C8B2C1A8EB300B48029 /* Preview Content */,
+				438C3C932C1A8EFE00B48029 /* LocationManager.swift */,
 			);
 			path = EscrowTestApp;
 			sourceTree = "<group>";
@@ -67,6 +200,43 @@
 				438C3C8C2C1A8EB300B48029 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		438C3CA62C1AC79D00B48029 /* dataflow_functions */ = {
+			isa = PBXGroup;
+			children = (
+				438C3CA52C1AC79D00B48029 /* wrapper.swift */,
+			);
+			path = dataflow_functions;
+			sourceTree = "<group>";
+		};
+		438C3CAA2C1AC79D00B48029 /* proto */ = {
+			isa = PBXGroup;
+			children = (
+				438C3CA72C1AC79D00B48029 /* run.grpc.swift */,
+				438C3CA82C1AC79D00B48029 /* run.pb.swift */,
+				438C3CA92C1AC79D00B48029 /* run.proto */,
+			);
+			path = proto;
+			sourceTree = "<group>";
+		};
+		438C3CB32C1AC79D00B48029 /* escrow */ = {
+			isa = PBXGroup;
+			children = (
+				432D3D562C1ACA2000DE8B92 /* sql-parser */,
+				432D3D3A2C1ACA1600DE8B92 /* bak */,
+				438C3CA62C1AC79D00B48029 /* dataflow_functions */,
+				438C3CAA2C1AC79D00B48029 /* proto */,
+				438C3CAB2C1AC79D00B48029 /* contact.swift */,
+				438C3CAC2C1AC79D00B48029 /* escrow.entitlements */,
+				438C3CAD2C1AC79D00B48029 /* Escrow.swift */,
+				438C3CAF2C1AC79D00B48029 /* Listener.swift */,
+				438C3CB02C1AC79D00B48029 /* location.swift */,
+				438C3CB12C1AC79D00B48029 /* main.swift */,
+				438C3CB22C1AC79D00B48029 /* photo.swift */,
+			);
+			name = escrow;
+			path = EscrowTestApp/escrow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +255,11 @@
 			dependencies = (
 			);
 			name = EscrowTestApp;
+			packageProductDependencies = (
+				438C3C962C1AC61900B48029 /* GRPC */,
+				438C3C992C1AC6C300B48029 /* Antlr4 */,
+				438C3CA32C1AC71C00B48029 /* DuckDB */,
+			);
 			productName = EscrowTestApp;
 			productReference = 438C3C812C1A8EB200B48029 /* EscrowTestApp.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +288,12 @@
 				Base,
 			);
 			mainGroup = 438C3C782C1A8EB200B48029;
+			packageReferences = (
+				438C3C952C1AC61900B48029 /* XCRemoteSwiftPackageReference "grpc-swift" */,
+				438C3C982C1AC6C300B48029 /* XCRemoteSwiftPackageReference "antlr4" */,
+				438C3C9F2C1AC6DB00B48029 /* XCLocalSwiftPackageReference "../antlr4-swift" */,
+				438C3CA22C1AC71C00B48029 /* XCRemoteSwiftPackageReference "duckdb-swift" */,
+			);
 			productRefGroup = 438C3C822C1A8EB200B48029 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,8 +308,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				432D3D5D2C1ACA2000DE8B92 /* sql3.sql in Resources */,
+				432D3D592C1ACA2000DE8B92 /* null_test.sql in Resources */,
+				432D3D6C2C1ACA2000DE8B92 /* SQLiteLexer.g4 in Resources */,
+				432D3D6B2C1ACA2000DE8B92 /* pom.xml in Resources */,
+				432D3D5C2C1ACA2000DE8B92 /* sql2.sql in Resources */,
+				432D3D582C1ACA2000DE8B92 /* frame_spec_2937.sql in Resources */,
 				438C3C8D2C1A8EB300B48029 /* Preview Assets.xcassets in Resources */,
+				432D3D5F2C1ACA2000DE8B92 /* WindowsFunctionsForSqLite.sql in Resources */,
+				432D3D5E2C1ACA2000DE8B92 /* values.sql in Resources */,
+				432D3D622C1ACA2000DE8B92 /* SQLiteLexer.tokens in Resources */,
+				432D3D6A2C1ACA2000DE8B92 /* desc.xml in Resources */,
+				432D3D632C1ACA2000DE8B92 /* SQLiteParser.interp in Resources */,
+				432D3D652C1ACA2000DE8B92 /* SQLiteParser.tokens in Resources */,
+				432D3D5B2C1ACA2000DE8B92 /* sql1.sql in Resources */,
+				432D3D6D2C1ACA2000DE8B92 /* SQLiteParser.g4 in Resources */,
+				432D3D5A2C1ACA2000DE8B92 /* returning.sql in Resources */,
+				432D3D572C1ACA2000DE8B92 /* alter-table-drop-column.sql in Resources */,
 				438C3C892C1A8EB300B48029 /* Assets.xcassets in Resources */,
+				432D3D602C1ACA2000DE8B92 /* SQLiteLexer.interp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,8 +337,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				438C3CD32C1AC79D00B48029 /* run.pb.swift in Sources */,
 				438C3C872C1A8EB200B48029 /* ContentView.swift in Sources */,
-				438C3C852C1A8EB200B48029 /* EscrowTestAppApp.swift in Sources */,
+				438C3CD12C1AC79D00B48029 /* wrapper.swift in Sources */,
+				438C3CDA2C1AC79D00B48029 /* photo.swift in Sources */,
+				432D3D642C1ACA2000DE8B92 /* SQLiteParser.swift in Sources */,
+				438C3CD82C1AC79D00B48029 /* location.swift in Sources */,
+				432D3D672C1ACA2000DE8B92 /* SQLiteParserBaseVisitor.swift in Sources */,
+				438C3CD62C1AC79D00B48029 /* Escrow.swift in Sources */,
+				432D3D662C1ACA2000DE8B92 /* SQLiteParserBaseListener.swift in Sources */,
+				432D3D612C1ACA2000DE8B92 /* SQLiteLexer.swift in Sources */,
+				438C3CD52C1AC79D00B48029 /* contact.swift in Sources */,
+				432D3D682C1ACA2000DE8B92 /* SQLiteParserListener.swift in Sources */,
+				438C3C852C1A8EB200B48029 /* EscrowTestApp.swift in Sources */,
+				438C3C942C1A8EFE00B48029 /* LocationManager.swift in Sources */,
+				438C3CD22C1AC79D00B48029 /* run.grpc.swift in Sources */,
+				432D3D692C1ACA2000DE8B92 /* SQLiteParserVisitor.swift in Sources */,
+				438C3CD72C1AC79D00B48029 /* Listener.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,8 +485,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"EscrowTestApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 3D7CL937LY;
 				ENABLE_HARDENED_RUNTIME = YES;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Get location";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -310,8 +525,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"EscrowTestApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 3D7CL937LY;
 				ENABLE_HARDENED_RUNTIME = YES;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Get location";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -359,6 +576,58 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		438C3C9F2C1AC6DB00B48029 /* XCLocalSwiftPackageReference "../antlr4-swift" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../antlr4-swift";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		438C3C952C1AC61900B48029 /* XCRemoteSwiftPackageReference "grpc-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/grpc/grpc-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.23.0;
+			};
+		};
+		438C3C982C1AC6C300B48029 /* XCRemoteSwiftPackageReference "antlr4" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/antlr/antlr4";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.13.1;
+			};
+		};
+		438C3CA22C1AC71C00B48029 /* XCRemoteSwiftPackageReference "duckdb-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/duckdb/duckdb-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		438C3C962C1AC61900B48029 /* GRPC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 438C3C952C1AC61900B48029 /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = GRPC;
+		};
+		438C3C992C1AC6C300B48029 /* Antlr4 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 438C3C982C1AC6C300B48029 /* XCRemoteSwiftPackageReference "antlr4" */;
+			productName = Antlr4;
+		};
+		438C3CA32C1AC71C00B48029 /* DuckDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 438C3CA22C1AC71C00B48029 /* XCRemoteSwiftPackageReference "duckdb-swift" */;
+			productName = DuckDB;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 438C3C792C1A8EB200B48029 /* Project object */;
 }

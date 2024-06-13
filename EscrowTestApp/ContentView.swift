@@ -1,22 +1,26 @@
-//
-//  ContentView.swift
-//  EscrowTestApp
-//
-//  Created by Zhiru Zhu on 6/12/24.
-//
-
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+    @StateObject var locationManager = LocationManager()
+        
+        var userLatitude: String {
+            return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
         }
-        .padding()
-    }
+        
+        var userLongitude: String {
+            return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
+        }
+        
+        var body: some View {
+            VStack {
+                Text("location status: \(locationManager.statusString)")
+                HStack {
+                    Text("latitude: \(userLatitude)").fixedSize(horizontal: false, vertical: true)
+                        .padding()
+                    Text("longitude: \(userLongitude)").fixedSize(horizontal: false, vertical: true).padding()
+                }
+            }
+        }
 }
 
 #Preview {
