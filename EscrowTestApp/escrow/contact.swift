@@ -15,22 +15,29 @@ extension Escrow {
             try self.connection.execute("CREATE TABLE Contact (given_name VARCHAR, family_name VARCHAR, phone_numbers VARCHAR[]);")
             
             var hasRes = false
-            
-            try contactStore.enumerateContacts(with: request) {
-                (contact, stop) in
-                
-                hasRes = true
-                
-                // Array containing all unified contacts from everywhere
-                contacts.append(contact)
-                
-                let givenName = contact.givenName
-                let familyName = contact.familyName
-                //                    let emailAddress = contact.emailAddresses.first?.value ?? ""
-                let phoneNumbers: [String] = contact.phoneNumbers.map{ $0.value.stringValue}
-                //                    print("contact = ", "\(givenName)", "\(familyName)", "\(phoneNumbers)")
-                
-                insertString += "('\(givenName)', '\(familyName)', \(phoneNumbers)),"
+                            
+            DispatchQueue.global(qos: .userInitiated).async {
+                do {
+                    try contactStore.enumerateContacts(with: request) {
+                        (contact, stop) in
+                        
+                        hasRes = true
+                        
+                        // Array containing all unified contacts from everywhere
+                        contacts.append(contact)
+                        
+                        let givenName = contact.givenName
+                        let familyName = contact.familyName
+                        //                    let emailAddress = contact.emailAddresses.first?.value ?? ""
+                        let phoneNumbers: [String] = contact.phoneNumbers.map{ $0.value.stringValue}
+                        //                    print("contact = ", "\(givenName)", "\(familyName)", "\(phoneNumbers)")
+                        
+                        insertString += "('\(givenName)', '\(familyName)', \(phoneNumbers)),"
+                    }
+                } catch {
+                    print(error)
+                    fatalError("can't init contact table")
+                }
             }
             
             if hasRes {
