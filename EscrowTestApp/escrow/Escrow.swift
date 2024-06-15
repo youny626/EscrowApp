@@ -54,9 +54,9 @@ class Escrow: NSObject {
 //    }
 //    
     private func initDB() {
+        initLocationTable()
         initContactTable()
         initPhotoTable()
-        initLocationTable()
     }
     
     private func mapNameToFunction() -> [String : DataflowFunctionType] {

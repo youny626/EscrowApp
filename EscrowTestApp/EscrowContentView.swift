@@ -43,25 +43,30 @@ struct EscrowContentView: View {
             else {
                 Text("Loading current weather")
                     .fixedSize(horizontal: false, vertical: true)
+                    .task {
+                        while currentWeather == nil {
+                            await setCurrentWeather()
+                        }
+                    }
             }
         }
         .padding()
-        .onReceive(timer) {
-//            time in if location == nil {
-//                setLocation()
+//        .onReceive(timer) {
+////            time in if location == nil {
+////                setLocation()
+////            }
+//            time in 
+//            if currentWeather == nil {
+//                Task {
+//                    await setCurrentWeather()
+//                }
 //            }
-            time in 
-            if currentWeather == nil {
-                Task {
-                    await setCurrentWeather()
-                }
-            }
-        }
+//        }
 //        .onAppear {
 //            setLocation()
 //        }
         .task {
-            await setCurrentWeather()
+            let escrow = Escrow.shared //pre-warm
         }
     }
     
@@ -92,8 +97,6 @@ struct EscrowContentView: View {
 //                    } catch {
 //                        print(error)
 //                    }
-                    
-                    
                     
                     do {
                         let API_KEY = "472781eae143abe172f25962d4f66e5a"

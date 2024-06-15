@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var locationManager = LocationManager()
-    
+        
     @State var currentWeather: WeatherResponse?
         
     var userLatitude: String {
@@ -44,18 +44,23 @@ struct ContentView: View {
 //                Text("Loading location")
 //                    .fixedSize(horizontal: false, vertical: true)
 //            }
-            if let currentWeather = currentWeather {
-                Text("Current temperature: \(currentWeather.main.temp)")
-                    .fixedSize(horizontal: false, vertical: true)
-                Text("Current location: \(currentWeather.name), latitude \(currentWeather.coord.lat), longitude \(currentWeather.coord.lon)")
-                    .fixedSize(horizontal: false, vertical: true)
+            if let location = locationManager.lastLocation {
+                if let currentWeather = currentWeather {
+                    Text("Current temperature: \(currentWeather.main.temp)")
+                        .fixedSize(horizontal: false, vertical: true)
+                    Text("Current location: \(currentWeather.name), latitude \(currentWeather.coord.lat), longitude \(currentWeather.coord.lon)")
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                else {
+                    Text("Loading current weather")
+                        .fixedSize(horizontal: false, vertical: true)
+                        .task {
+                            await setCurrentWeather()
+                        }
+                }
             }
             else {
-                Text("Loading current weather")
-                    .fixedSize(horizontal: false, vertical: true)
-                    .task {
-                        await setCurrentWeather()
-                    }
+                Text("Loading location")
             }
         }
     }
