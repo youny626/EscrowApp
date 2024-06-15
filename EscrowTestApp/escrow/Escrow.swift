@@ -8,7 +8,7 @@ import CoreLocation
 
 // FIXME: since the server needs to store a mapping for all functions (and call the function by name), if the functions uses generic (codable) return type, it can't infer the type, since different functions may have different return type and the type is only known after retrieving the function by name. so if the function neeeds to be executed remotely, it needs to use Data as the return type (the function output will be transmitted as a byte buffer (Data) anyway). otherwise it can be any type
 
-typealias DataflowFunctionType = (_ success: Bool, _ df: DataFrame?) -> Any
+typealias DataflowFunctionType = (_ success: Bool, _ df: DataFrame?) async -> Any
 
 enum ServerType {
     case standard
@@ -75,14 +75,11 @@ class Escrow: NSObject {
         return dict
     }
     
-    
     public static func run(_ query: String,
                            dataflowFunction: DataflowFunctionType? = nil,
                            dataflowFunctionName: String? = nil,
-                           serverType: ServerType? = nil) async throws -> Any {
-        
-        let (col_names, table_name) = try parse_names(query)
-        
+                           serverType: ServerType? = nil) async -> Any {
+                
 //        if table_name == "Location" {
 ////            shared.escrowLocationManager.locationManager.requestLocation()
 //            shared.insertLocations(shared.escrowLocationManager.locations)
@@ -123,10 +120,9 @@ class Escrow: NSObject {
         //        catch {
         //            print(error)
         //        }
-        
-        var result_cols: [TabularData.AnyColumn] = []
-        
+                
         do {
+
             var startTime = CFAbsoluteTimeGetCurrent()
             
             let result = try shared.connection.query(query)
@@ -136,6 +132,10 @@ class Escrow: NSObject {
             
             startTime = CFAbsoluteTimeGetCurrent()
             
+            let (col_names, table_name) = try parse_names(query)
+            
+            var result_cols: [TabularData.AnyColumn] = []
+                        
             for col in result {
                 
 //                print("Processing col: \(col)")
@@ -222,42 +222,50 @@ class Escrow: NSObject {
             }
             
             timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-            print("Time elapsed for processing query result: \(timeElapsed) s.")
             
             // print(result.isEmpty)
+            
+            let df = DataFrame(columns: result_cols)
+            
+            print("Time elapsed for processing query result: \(timeElapsed) s.")
+            
+            if let serverType = serverType {
+                guard let dataflowFunctionName = dataflowFunctionName else {
+                    fatalError("need to specify function name")
+                }
+                
+                // dataflowFunction = shared.mapNameToFunction()[dataflowFunctionName]
+                
+                let client = try createClient(server: serverType)
+                
+                let params: FunctionParams = .with {
+                    $0.name = dataflowFunctionName
+                    $0.success = true
+                    $0.data = try! df.csvRepresentation()
+                }
+                
+                var res: Result? = nil
+                
+//                Task.init {
+//                    res = try await client.runFunction(params)
+//                }
+                res = try await client.runFunction(params)
+                
+                return res!.result
+
+                // client.channel.close()
+                
+            } else {
+                guard let dataflowFunction = dataflowFunction else {
+                    fatalError("need to specify function")
+                }
+                let res = await dataflowFunction(true, df)
+                return res
+            }
         }
         catch {
             fatalError("Error: \(error)")
             // dataflowFunction(false, nil)
-        }
-        
-        let df = DataFrame(columns: result_cols)
-        
-        if let serverType = serverType {
-            guard let dataflowFunctionName = dataflowFunctionName else {
-                fatalError("need to specify function name")
-            }
-            
-            // dataflowFunction = shared.mapNameToFunction()[dataflowFunctionName]
-            
-            let client = try createClient(server: serverType)
-            
-            let params: FunctionParams = .with {
-                $0.name = dataflowFunctionName
-                $0.success = true
-                $0.data = try! df.csvRepresentation()
-            }
-            
-            let res = try await client.runFunction(params)
-            
-            // client.channel.close()
-            
-            return res.result
-        } else {
-            guard let dataflowFunction = dataflowFunction else {
-                fatalError("need to specify function")
-            }
-            return dataflowFunction(true, df)
         }
         
     }

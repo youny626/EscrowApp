@@ -11,7 +11,7 @@ import SwiftUI
 struct EscrowTestApp: App {
     var body: some Scene {
         WindowGroup {
-            EscrowContentView()
+            ContentView()
         }
     }
 }

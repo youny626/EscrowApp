@@ -65,6 +65,22 @@ extension Escrow {
 //        escrowLocationManager = locationManager
 //    }
     
+    public static func setLocationManagerDesiredAccuracy(_ desiredAccuracy: CLLocationAccuracy) {
+        shared.escrowLocationManager.desiredAccuracy = desiredAccuracy
+    }
+    
+    public static func setLocationManagerDistanceFilter(_ distanceFilter: CLLocationDistance) {
+        shared.escrowLocationManager.distanceFilter = distanceFilter
+    }
+    
+    public static func startUpdatingLocation() {
+        shared.escrowLocationManager.startUpdatingLocation()
+    }
+    
+    public static func stopUpdatingLocation() {
+        shared.escrowLocationManager.stopUpdatingLocation()
+    }
+    
     func insertCurrentLocation() async {
         do {
             let sl = Location()

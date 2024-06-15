@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43291AC82C1D418C001F1E83 /* weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43291AC72C1D418C001F1E83 /* weather.swift */; };
 		432D3D572C1ACA2000DE8B92 /* alter-table-drop-column.sql in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D3D2C1ACA2000DE8B92 /* alter-table-drop-column.sql */; };
 		432D3D582C1ACA2000DE8B92 /* frame_spec_2937.sql in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D3E2C1ACA2000DE8B92 /* frame_spec_2937.sql */; };
 		432D3D592C1ACA2000DE8B92 /* null_test.sql in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D3F2C1ACA2000DE8B92 /* null_test.sql */; };
@@ -51,6 +52,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		43291AC72C1D418C001F1E83 /* weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weather.swift; sourceTree = "<group>"; };
 		432D3D382C1ACA1600DE8B92 /* CustomType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomType.swift; sourceTree = "<group>"; };
 		432D3D392C1ACA1600DE8B92 /* main_bak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main_bak.swift; sourceTree = "<group>"; };
 		432D3D3D2C1ACA2000DE8B92 /* alter-table-drop-column.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "alter-table-drop-column.sql"; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				438C3C8B2C1A8EB300B48029 /* Preview Content */,
 				438C3C932C1A8EFE00B48029 /* LocationManager.swift */,
 				432D3D6E2C1AD8D800DE8B92 /* EscrowContentView.swift */,
+				43291AC72C1D418C001F1E83 /* weather.swift */,
 			);
 			path = EscrowTestApp;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				438C3CD82C1AC79D00B48029 /* location.swift in Sources */,
 				432D3D672C1ACA2000DE8B92 /* SQLiteParserBaseVisitor.swift in Sources */,
 				438C3CD62C1AC79D00B48029 /* Escrow.swift in Sources */,
+				43291AC82C1D418C001F1E83 /* weather.swift in Sources */,
 				432D3D662C1ACA2000DE8B92 /* SQLiteParserBaseListener.swift in Sources */,
 				432D3D612C1ACA2000DE8B92 /* SQLiteLexer.swift in Sources */,
 				438C3CD52C1AC79D00B48029 /* contact.swift in Sources */,
