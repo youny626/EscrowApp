@@ -1,4 +1,5 @@
 import Contacts
+import TabularData
 
 extension Escrow {
     func initContactTable() {
@@ -16,28 +17,26 @@ extension Escrow {
             
             var hasRes = false
                             
-            DispatchQueue.global(qos: .userInitiated).async {
-                do {
-                    try contactStore.enumerateContacts(with: request) {
-                        (contact, stop) in
-                        
-                        hasRes = true
-                        
-                        // Array containing all unified contacts from everywhere
-                        contacts.append(contact)
-                        
-                        let givenName = contact.givenName
-                        let familyName = contact.familyName
-                        //                    let emailAddress = contact.emailAddresses.first?.value ?? ""
-                        let phoneNumbers: [String] = contact.phoneNumbers.map{ $0.value.stringValue}
-                        //                    print("contact = ", "\(givenName)", "\(familyName)", "\(phoneNumbers)")
-                        
-                        insertString += "('\(givenName)', '\(familyName)', \(phoneNumbers)),"
-                    }
-                } catch {
-                    print(error)
-                    fatalError("can't init contact table")
+            do {
+                try contactStore.enumerateContacts(with: request) {
+                    (contact, stop) in
+                    
+                    hasRes = true
+                    
+                    // Array containing all unified contacts from everywhere
+                    contacts.append(contact)
+                    
+                    let givenName = contact.givenName
+                    let familyName = contact.familyName
+                    //                    let emailAddress = contact.emailAddresses.first?.value ?? ""
+                    let phoneNumbers: [String] = contact.phoneNumbers.map{ $0.value.stringValue}
+                    //                    print("contact = ", "\(givenName)", "\(familyName)", "\(phoneNumbers)")
+                    
+                    insertString += "('\(givenName)', '\(familyName)', \(phoneNumbers)),"
                 }
+            } catch {
+                print(error)
+                fatalError("can't init contact table")
             }
             
             if hasRes {
@@ -249,4 +248,16 @@ extension Escrow {
 //            }
 //        }
 //    }
+}
+
+func testContact(_ success: Bool, _ df: DataFrame?) -> DataFrame? {
+    if success {
+        if let df = df {
+            return df
+        }
+    }
+    else {
+        print("error")
+    }
+    return nil
 }

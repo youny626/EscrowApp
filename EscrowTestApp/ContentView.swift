@@ -44,7 +44,6 @@ struct ContentView: View {
 //                Text("Loading location")
 //                    .fixedSize(horizontal: false, vertical: true)
 //            }
-            if let location = locationManager.lastLocation {
                 if let currentWeather = currentWeather {
                     Text("Current temperature: \(currentWeather.main.temp)")
                         .fixedSize(horizontal: false, vertical: true)
@@ -55,16 +54,14 @@ struct ContentView: View {
                     Text("Loading current weather")
                         .fixedSize(horizontal: false, vertical: true)
                         .task {
-                            await setCurrentWeather()
+                            while currentWeather == nil {
+                                await setCurrentWeather()
+                            }
                         }
                 }
             }
-            else {
-                Text("Loading location")
-            }
         }
     }
-}
 
 
 #Preview {

@@ -66,7 +66,27 @@ struct EscrowContentView: View {
 //            setLocation()
 //        }
         .task {
-            let escrow = Escrow.shared //pre-warm
+//            let escrow = Escrow.shared //pre-warm
+//
+//            var startTime = CFAbsoluteTimeGetCurrent()
+//
+//            //let query = "SELECT asset, mediaType FROM Photos ORDER BY creationDate"
+//            let query = "SELECT asset FROM Photos WHERE mediaType == 'image' ORDER BY creationDate"
+//
+//
+//            let res = await Escrow.run(query, dataflowFunction: testPhoto) as! Array<NSImage>
+//
+//            var timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
+//            print(res.count)
+//            print("Time elapsed: \(timeElapsed) s.")
+//            
+//            let startTime = CFAbsoluteTimeGetCurrent()
+//            
+//            let resNoEscrow = getAllPhotos()
+//            
+//            let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
+//            print(resNoEscrow.count)
+//            print("Time elapsed: \(timeElapsed) s.")
         }
     }
     
@@ -111,6 +131,8 @@ struct EscrowContentView: View {
                         guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Error fetching weather data")}
                         
                         let decodedData = try JSONDecoder().decode(WeatherResponse.self, from: data)
+                        
+//                        location = CLLocationCoordinate2D(latitude: decodedData.coord.lat, longitude: decodedData.coord.lon)
                         
                         return decodedData
                         

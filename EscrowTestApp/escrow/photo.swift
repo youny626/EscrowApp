@@ -157,6 +157,7 @@ extension PHAsset {
                              resultHandler: {(result, info) -> Void in
             img = result
         })
+//        manager.stopCachingImagesForAllAssets()
         return img
     }
     
