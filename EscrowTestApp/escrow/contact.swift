@@ -250,14 +250,40 @@ extension Escrow {
 //    }
 }
 
-func testContact(_ success: Bool, _ df: DataFrame?) -> DataFrame? {
+func testContact(_ success: Bool, _ df: DataFrame?) -> [(String, String, [String])]? {
     if success {
         if let df = df {
-            return df
+            let lst = df.rows.map {
+                ($0[0] as! String, $0[1] as! String, $0[2] as! [String])
+            }
+            return lst
         }
     }
     else {
         print("error")
     }
     return nil
+}
+
+func getAllContacts() -> [(String, String, [String])] {
+    var contacts: [(String, String, [String])] = []
+    
+    let keysToFetch = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey] as [CNKeyDescriptor]
+    let request = CNContactFetchRequest(keysToFetch: keysToFetch)
+    
+    let contactStore = CNContactStore()
+    
+    do {
+        try contactStore.enumerateContacts(with: request) {
+            (contact, stop) in
+                        
+            let phoneNumbers: [String] = contact.phoneNumbers.map{$0.value.stringValue}
+            contacts.append((contact.givenName, contact.familyName, phoneNumbers))
+        
+        }
+    } catch {
+        print(error)
+    }
+    
+    return contacts
 }

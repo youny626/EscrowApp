@@ -63,7 +63,7 @@ class Escrow: NSObject {
         
         let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
 //                print(res.count)
-        print("Time elapsed initContactTable: \(timeElapsed) s.")
+        print("Time elapsed init: \(timeElapsed) s.")
         let resToWrite = "\(timeElapsed)\n"
         
         let filename = getDocumentsDirectory().appendingPathComponent("contact_load.txt")

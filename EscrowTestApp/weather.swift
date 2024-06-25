@@ -1,4 +1,5 @@
 import Foundation
+import TabularData
 import CoreLocation
 
 func getCurrentWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) async throws -> WeatherResponse? {
@@ -21,6 +22,54 @@ func getCurrentWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees
     } catch {
         print(error)
     }
+    return nil
+}
+
+func getCurrentWeather(_ success: Bool, _ df: DataFrame?) async -> WeatherResponse? {
+    
+    if success {
+        if let df = df {
+//                print("\(df)")
+            
+            if let longitude = df["longitude"].first as? CLLocationDegrees,
+            let latitude = df["latitude"].first as? CLLocationDegrees {
+                
+//                    do {
+//                        // FIXME: need apple developer membership
+//                        let weather = try await WeatherService.shared.weather(for: .init(latitude: latitude as! CLLocationDegrees, longitude: longitude as! CLLocationDegrees))
+//                        return weather.currentWeather
+//                    } catch {
+//                        print(error)
+//                    }
+                
+                do {
+                    let API_KEY = "472781eae143abe172f25962d4f66e5a"
+                    guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=\(API_KEY)&units=metric")
+                    else { fatalError("Missing URL") }
+                    
+            
+                    let urlRequest = URLRequest(url: url)
+                    
+                    let (data, response) = try await URLSession.shared.data(for: urlRequest)
+                    
+                    guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Error fetching weather data")}
+                    
+                    let decodedData = try JSONDecoder().decode(WeatherResponse.self, from: data)
+                    
+//                        location = CLLocationCoordinate2D(latitude: decodedData.coord.lat, longitude: decodedData.coord.lon)
+                    
+                    return decodedData
+                    
+                } catch {
+                    print(error)
+                }
+            } 
+        }
+    }
+    else {
+        print("error")
+    }
+    
     return nil
 }
 
