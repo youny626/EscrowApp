@@ -288,11 +288,11 @@ class Escrow: NSObject {
                     
                     if table_name == "Photos" && col.name == "asset" {
                         
-                        var storeData = false
+                        var storeAsString = false
                         if serverType != nil {
-                            storeData = true
+                            storeAsString = true
                         }
-                        any_col = getAssetsFromIds(ids: col.cast(to: String.self), storeAsString: storeData).eraseToAnyColumn()
+                        any_col = getAssetsFromIds(ids: col.cast(to: String.self), storeAsString: storeAsString).eraseToAnyColumn()
                         
 //                        let startTime2 = CFAbsoluteTimeGetCurrent()
 //                        
@@ -385,15 +385,7 @@ class Escrow: NSObject {
                 let channel: GRPCChannel
                 
                 if use_tls {
-//                    let caCert = SampleCertificate.ca
-//                    let clientCert = SampleCertificate.client
                                 
-//                    let clientTLSConfiguration = GRPCTLSConfiguration.makeClientConfigurationBackedByNIOSSL(
-//                        certificateChain: [.certificate(SampleCertificate.client.certificate)],
-//                        privateKey: .privateKey(SamplePrivateKey.client),
-//                        trustRoots: .certificates([SampleCertificate.ca.certificate])
-////                        hostnameOverride: SampleCertificate.server.commonName
-//                      )
                     let clientTLSConfiguration = GRPCTLSConfiguration.makeClientConfigurationBackedByNIOSSL(
                           certificateChain: [.certificate(SampleCertificate.client.certificate)],
                           privateKey: .privateKey(SamplePrivateKey.client),

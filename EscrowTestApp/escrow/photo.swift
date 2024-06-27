@@ -126,7 +126,7 @@ extension Escrow {
             case .image:
                 //                assetCol.append(asset.getImage()!)
                 if storeAsString {
-                    assetCol[idx] = String(decoding: asset.getImage()!.tiffRepresentation!, as: UTF8.self)
+                    assetCol[idx] = asset.getImage()!.tiffRepresentation!.base64EncodedString()
                 } else {
                     assetCol[idx] = asset.getImage()
                 }

@@ -181,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				43291ACD2C2934D8001F1E83 /* logger.swift */,
-				43291B0E2C2D4090001F1E83 /* GRPCSwiftCertificate.swift */,
 				438C3CB32C1AC79D00B48029 /* escrow */,
 				438C3C832C1A8EB200B48029 /* EscrowTestApp */,
 				438C3C822C1A8EB200B48029 /* Products */,
@@ -242,6 +241,7 @@
 		438C3CB32C1AC79D00B48029 /* escrow */ = {
 			isa = PBXGroup;
 			children = (
+				43291B0E2C2D4090001F1E83 /* GRPCSwiftCertificate.swift */,
 				432D3D562C1ACA2000DE8B92 /* sql-parser */,
 				432D3D3A2C1ACA1600DE8B92 /* bak */,
 				438C3CA62C1AC79D00B48029 /* dataflow_functions */,
