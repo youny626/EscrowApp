@@ -3,6 +3,7 @@ import SwiftUI
 import GRPC
 import DuckDB
 import CoreLocation
+import NIOSSL
 
 //typealias DataflowFunctionType<T: Codable> = (_ success: Bool, _ df: DataFrame?) -> T
 
@@ -16,6 +17,8 @@ enum ServerType {
 
 @MainActor
 class Escrow: NSObject {
+    
+    let use_tls: Bool = true
     
     static let shared = Escrow()
     
@@ -379,11 +382,40 @@ class Escrow: NSObject {
                 
                 let serverConfig = getServerConfig(server: serverType)
                 
-                let channel = try GRPCChannelPool.with(
-                    target: .host(serverConfig["IP"] as! String, port: serverConfig["port"] as! Int),
-                    transportSecurity: .plaintext, // TODO: obviously can't be plaintext and transmission needs to be secure (using tls)
-                    eventLoopGroup: group
-                )
+                let channel: GRPCChannel
+                
+                if use_tls {
+//                    let caCert = SampleCertificate.ca
+//                    let clientCert = SampleCertificate.client
+                                
+//                    let clientTLSConfiguration = GRPCTLSConfiguration.makeClientConfigurationBackedByNIOSSL(
+//                        certificateChain: [.certificate(SampleCertificate.client.certificate)],
+//                        privateKey: .privateKey(SamplePrivateKey.client),
+//                        trustRoots: .certificates([SampleCertificate.ca.certificate])
+////                        hostnameOverride: SampleCertificate.server.commonName
+//                      )
+                    let clientTLSConfiguration = GRPCTLSConfiguration.makeClientConfigurationBackedByNIOSSL(
+                          certificateChain: [.certificate(SampleCertificate.client.certificate)],
+                          privateKey: .privateKey(SamplePrivateKey.client),
+                          trustRoots: .certificates([SampleCertificate.ca.certificate]),
+                          certificateVerification: .noHostnameVerification,
+                          hostnameOverride: SampleCertificate.server.commonName
+                        )
+                    channel = try GRPCChannelPool.with(
+                        target: .host(serverConfig["IP"] as! String, port: serverConfig["port"] as! Int),
+                        transportSecurity: .tls(clientTLSConfiguration),
+                        eventLoopGroup: group
+                    )
+                    
+                  } else {
+                      channel = try GRPCChannelPool.with(
+                          target: .host(serverConfig["IP"] as! String, port: serverConfig["port"] as! Int),
+                          transportSecurity: .plaintext,
+                          eventLoopGroup: group
+                      )
+                  }
+                
+            
                 defer {
                     try? channel.close().wait()
                 }

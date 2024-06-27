@@ -10,6 +10,7 @@
 		43291AC82C1D418C001F1E83 /* weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43291AC72C1D418C001F1E83 /* weather.swift */; };
 		43291ACA2C22A493001F1E83 /* HelloWorldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43291AC92C22A493001F1E83 /* HelloWorldView.swift */; };
 		43291ACE2C2934D8001F1E83 /* logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43291ACD2C2934D8001F1E83 /* logger.swift */; };
+		43291B0F2C2D4090001F1E83 /* GRPCSwiftCertificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43291B0E2C2D4090001F1E83 /* GRPCSwiftCertificate.swift */; };
 		432D3D572C1ACA2000DE8B92 /* alter-table-drop-column.sql in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D3D2C1ACA2000DE8B92 /* alter-table-drop-column.sql */; };
 		432D3D582C1ACA2000DE8B92 /* frame_spec_2937.sql in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D3E2C1ACA2000DE8B92 /* frame_spec_2937.sql */; };
 		432D3D592C1ACA2000DE8B92 /* null_test.sql in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D3F2C1ACA2000DE8B92 /* null_test.sql */; };
@@ -57,6 +58,7 @@
 		43291AC72C1D418C001F1E83 /* weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weather.swift; sourceTree = "<group>"; };
 		43291AC92C22A493001F1E83 /* HelloWorldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloWorldView.swift; sourceTree = "<group>"; };
 		43291ACD2C2934D8001F1E83 /* logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logger.swift; sourceTree = "<group>"; };
+		43291B0E2C2D4090001F1E83 /* GRPCSwiftCertificate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GRPCSwiftCertificate.swift; sourceTree = "<group>"; };
 		432D3D382C1ACA1600DE8B92 /* CustomType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomType.swift; sourceTree = "<group>"; };
 		432D3D392C1ACA1600DE8B92 /* main_bak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main_bak.swift; sourceTree = "<group>"; };
 		432D3D3D2C1ACA2000DE8B92 /* alter-table-drop-column.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "alter-table-drop-column.sql"; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				43291ACD2C2934D8001F1E83 /* logger.swift */,
+				43291B0E2C2D4090001F1E83 /* GRPCSwiftCertificate.swift */,
 				438C3CB32C1AC79D00B48029 /* escrow */,
 				438C3C832C1A8EB200B48029 /* EscrowTestApp */,
 				438C3C822C1A8EB200B48029 /* Products */,
@@ -358,6 +361,7 @@
 				438C3CD32C1AC79D00B48029 /* run.pb.swift in Sources */,
 				438C3C872C1A8EB200B48029 /* ContentView.swift in Sources */,
 				438C3CD12C1AC79D00B48029 /* DataflowFunctions.swift in Sources */,
+				43291B0F2C2D4090001F1E83 /* GRPCSwiftCertificate.swift in Sources */,
 				438C3CDA2C1AC79D00B48029 /* photo.swift in Sources */,
 				432D3D642C1ACA2000DE8B92 /* SQLiteParser.swift in Sources */,
 				43291ACE2C2934D8001F1E83 /* logger.swift in Sources */,
