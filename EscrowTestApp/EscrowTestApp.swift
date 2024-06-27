@@ -18,8 +18,19 @@ struct EscrowTestApp: App {
     
     init() {
         
-        let filename = getDocumentsDirectory().appendingPathComponent("contact_eval.txt")
-        let filename_bs = getDocumentsDirectory().appendingPathComponent("contact_eval_bs.txt")
+        Task {
+            
+            let escrow = Escrow()
+            
+            let query = "SELECT asset FROM Photos WHERE mediaType == 'image' ORDER BY creationDate LIMIT 2"
+            
+            let res = await escrow.run(query, dataflowFunctionName: "testPhotoRemote", serverType: .standard) as! Data
+            
+            print(String(decoding: res, as: UTF8.self))
+        }
+        
+//        let filename = getDocumentsDirectory().appendingPathComponent("contact_eval.txt")
+//        let filename_bs = getDocumentsDirectory().appendingPathComponent("contact_eval_bs.txt")
         
 //        let filename = getDocumentsDirectory().appendingPathComponent("photo_eval.txt")
 //        let filename_bs = getDocumentsDirectory().appendingPathComponent("photo_eval_bs.txt")
@@ -27,33 +38,33 @@ struct EscrowTestApp: App {
 //        let filename = getDocumentsDirectory().appendingPathComponent("location_eval.txt")
 //        let filename_bs = getDocumentsDirectory().appendingPathComponent("location_eval_bs.txt")
                    
-        for _ in 0..<10 {
+//        for _ in 0..<10 {
             
 //            let locationManager = LocationManager()
 //            
-            Task {
-                let startTime = CFAbsoluteTimeGetCurrent()
-                
-                let res = getAllContacts()
-//                let res = getAllPhotos()
-                
-//                var currentWeather: WeatherResponse? = nil
+//            Task {
+//                let startTime = CFAbsoluteTimeGetCurrent()
 //                
-//                while locationManager.lastLocation == nil {
-//                }
+//                let res = getAllContacts()
+////                let res = getAllPhotos()
 //                
-//                let location = locationManager.lastLocation!
-//                currentWeather = try await getCurrentWeather(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-
-                let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-                print("Time elapsed baseline: \(timeElapsed) s.")
-                let resToWrite = "\(timeElapsed)\n"
-                
-                print(res.count)
-//                print(currentWeather?.name ?? "error", currentWeather?.main.temp ?? 0)
-                
-                log(filename_bs, resToWrite)
-            }
+////                var currentWeather: WeatherResponse? = nil
+////                
+////                while locationManager.lastLocation == nil {
+////                }
+////                
+////                let location = locationManager.lastLocation!
+////                currentWeather = try await getCurrentWeather(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+//
+//                let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
+//                print("Time elapsed baseline: \(timeElapsed) s.")
+//                let resToWrite = "\(timeElapsed)\n"
+//                
+//                print(res.count)
+////                print(currentWeather?.name ?? "error", currentWeather?.main.temp ?? 0)
+//                
+//                log(filename_bs, resToWrite)
+//            }
             
             
 //            Task {
@@ -97,7 +108,7 @@ struct EscrowTestApp: App {
 //
 //            }
             
-        }
+//        }
     }
     
     var body: some Scene {

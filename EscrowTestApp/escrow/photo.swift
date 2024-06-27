@@ -1,7 +1,7 @@
 import Foundation
 import TabularData
 import Photos
-import SwiftUI
+import AppKit
 import DuckDB
 
 extension PHAssetMediaType {
@@ -90,7 +90,7 @@ extension Escrow {
         }
     }
     
-    func getAssetsFromIds(ids: DuckDB.Column<String>) -> TabularData.Column<Any> {
+    func getAssetsFromIds(ids: DuckDB.Column<String>, storeAsString: Bool = false) -> TabularData.Column<Any> {
         
         let id_dict = Dictionary(uniqueKeysWithValues: ids.enumerated().map{($1!, $0)})
         //        print(id_dict)
@@ -125,7 +125,11 @@ extension Escrow {
             switch asset.mediaType {
             case .image:
                 //                assetCol.append(asset.getImage()!)
-                assetCol[idx] = asset.getImage()
+                if storeAsString {
+                    assetCol[idx] = String(decoding: asset.getImage()!.tiffRepresentation!, as: UTF8.self)
+                } else {
+                    assetCol[idx] = asset.getImage()
+                }
             case .video:
                 //                assetCol.append(asset.getVideo()!)
                 assetCol[idx] = asset.getVideo()
@@ -145,6 +149,7 @@ extension Escrow {
 
 extension PHAsset {
     
+    // TODO: UIKit (iPhone) defines UIImage and AppKit (Mac OS X) defines NSImage, so it should return either depending on device
     func getImage() -> NSImage? {
         let manager = PHCachingImageManager.default()
         let option = PHImageRequestOptions()

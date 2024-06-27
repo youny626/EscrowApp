@@ -58,34 +58,35 @@ class Escrow: NSObject {
         let startTime = CFAbsoluteTimeGetCurrent()
 
 //        initLocationTable()
-        initContactTable()
-//        initPhotoTable()
+//        initContactTable()
+        initPhotoTable()
         
         let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
 //                print(res.count)
         print("Time elapsed init: \(timeElapsed) s.")
-        let resToWrite = "\(timeElapsed)\n"
         
-        let filename = getDocumentsDirectory().appendingPathComponent("contact_load.txt")
-
-        log(filename, resToWrite)
+//        let resToWrite = "\(timeElapsed)\n"
+//        
+//        let filename = getDocumentsDirectory().appendingPathComponent("contact_load.txt")
+//
+//        log(filename, resToWrite)
     }
     
-    private func mapNameToFunction() -> [String : DataflowFunctionType] {
-        
-        var dict: [String : DataflowFunctionType] = [:]
-        
-        let functions = DataflowFunctions()
-        let mirror = Mirror(reflecting: functions)
-        
-        for (_, value) in mirror.children {
-            //        print("\(label), \(value)")
-            let function = value as? DataflowFunctionWrapper
-            dict[function!.name] = function!.wrappedValue
-        }
-        
-        return dict
-    }
+//    private func mapNameToFunction() -> [String : DataflowFunctionType] {
+//        
+//        var dict: [String : DataflowFunctionType] = [:]
+//        
+//        let functions = DataflowFunctions()
+//        let mirror = Mirror(reflecting: functions)
+//        
+//        for (_, value) in mirror.children {
+//            //        print("\(label), \(value)")
+//            let function = value as? DataflowFunction
+//            dict[function!.name] = function!.function
+//        }
+//        
+//        return dict
+//    }
     
     public static func run(_ query: String,
                            dataflowFunction: DataflowFunctionType? = nil,
@@ -284,7 +285,11 @@ class Escrow: NSObject {
                     
                     if table_name == "Photos" && col.name == "asset" {
                         
-                        any_col = getAssetsFromIds(ids: col.cast(to: String.self)).eraseToAnyColumn()
+                        var storeData = false
+                        if serverType != nil {
+                            storeData = true
+                        }
+                        any_col = getAssetsFromIds(ids: col.cast(to: String.self), storeAsString: storeData).eraseToAnyColumn()
                         
 //                        let startTime2 = CFAbsoluteTimeGetCurrent()
 //                        
@@ -367,14 +372,32 @@ class Escrow: NSObject {
                     fatalError("need to specify function name")
                 }
                 
-                // dataflowFunction = shared.mapNameToFunction()[dataflowFunctionName]
+                let group = PlatformSupport.makeEventLoopGroup(loopCount: 1)
+                defer {
+                    try? group.syncShutdownGracefully()
+                }
                 
-                let client = try createClient(server: serverType)
+                let serverConfig = getServerConfig(server: serverType)
+                
+                let channel = try GRPCChannelPool.with(
+                    target: .host(serverConfig["IP"] as! String, port: serverConfig["port"] as! Int),
+                    transportSecurity: .plaintext, // TODO: obviously can't be plaintext and transmission needs to be secure (using tls)
+                    eventLoopGroup: group
+                )
+                defer {
+                    try? channel.close().wait()
+                }
+                
+                let client = RunAsyncClient(channel: channel)
+                
+//                let client = try createClient(server: serverType)
+                
+                let data = try df.jsonRepresentation()
                 
                 let params: FunctionParams = .with {
                     $0.name = dataflowFunctionName
                     $0.success = true
-                    $0.data = try! df.csvRepresentation()
+                    $0.data = data
                 }
                 
                 var res: Result? = nil
@@ -382,6 +405,7 @@ class Escrow: NSObject {
 //                Task.init {
 //                    res = try await client.runFunction(params)
 //                }
+                print("sending request to server")
                 res = try await client.runFunction(params)
                 
                 return res!.result

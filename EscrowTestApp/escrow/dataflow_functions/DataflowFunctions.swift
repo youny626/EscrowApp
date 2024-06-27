@@ -1,31 +1,39 @@
 import Foundation
 import TabularData
+import AppKit
 
-@propertyWrapper
-// TODO: just use struct (tuple)
-struct DataflowFunctionWrapper {
-    var wrappedValue: DataflowFunctionType // TODO: more informative name
+struct DataflowFunction {
+    var function: DataflowFunctionType
     var name: String
     
-    
-    init(wrappedValue: @escaping DataflowFunctionType, name: String) {
-        self.wrappedValue = wrappedValue
+    init(function: @escaping DataflowFunctionType, name: String) {
+        self.function = function
         self.name = name
     }
 }
 
+// pre-specified by developers
+var DataflowFunctions: [DataflowFunction] = [DataflowFunction(function: testPhotoRemote, name: "testPhotoRemote")]
 
-
-struct DataflowFunctions {
+func testPhotoRemote(_ success: Bool, _ df: DataFrame?) -> Data? {
     
-    // Developer needs to wrap their function in DataflowFunctionWrapper
-
-    @DataflowFunctionWrapper(wrappedValue: test, name: "test") var x
-    @DataflowFunctionWrapper(wrappedValue: test2, name: "test2") var y
-//    @DataflowFunctionWrapper(wrappedValue: test2, name: "test2") var y
+    var images : Array<NSImage> = Array<NSImage>()
     
-    // TODO:
+    if success {
+        if let df = df {
+            print(df)
+            images = df["asset"].map{
+                $0 as! NSImage
+            }
+            print(images.count)
+        }
+    }
+    else {
+        print("error")
+    }
     
+//    return nil
+    return Data("testPhotoRemote".utf8)
 }
 
 func test(_ success: Bool, _ df: DataFrame?) -> Data {

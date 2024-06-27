@@ -43,7 +43,7 @@
 		438C3C972C1AC61900B48029 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 438C3C962C1AC61900B48029 /* GRPC */; };
 		438C3C9A2C1AC6C300B48029 /* Antlr4 in Frameworks */ = {isa = PBXBuildFile; productRef = 438C3C992C1AC6C300B48029 /* Antlr4 */; };
 		438C3CA42C1AC71C00B48029 /* DuckDB in Frameworks */ = {isa = PBXBuildFile; productRef = 438C3CA32C1AC71C00B48029 /* DuckDB */; };
-		438C3CD12C1AC79D00B48029 /* wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3CA52C1AC79D00B48029 /* wrapper.swift */; };
+		438C3CD12C1AC79D00B48029 /* DataflowFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3CA52C1AC79D00B48029 /* DataflowFunctions.swift */; };
 		438C3CD22C1AC79D00B48029 /* run.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3CA72C1AC79D00B48029 /* run.grpc.swift */; };
 		438C3CD32C1AC79D00B48029 /* run.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3CA82C1AC79D00B48029 /* run.pb.swift */; };
 		438C3CD52C1AC79D00B48029 /* contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3CAB2C1AC79D00B48029 /* contact.swift */; };
@@ -91,7 +91,7 @@
 		438C3C8A2C1A8EB300B48029 /* EscrowTestApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EscrowTestApp.entitlements; sourceTree = "<group>"; };
 		438C3C8C2C1A8EB300B48029 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		438C3C932C1A8EFE00B48029 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		438C3CA52C1AC79D00B48029 /* wrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = wrapper.swift; sourceTree = "<group>"; };
+		438C3CA52C1AC79D00B48029 /* DataflowFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataflowFunctions.swift; sourceTree = "<group>"; };
 		438C3CA72C1AC79D00B48029 /* run.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = run.grpc.swift; sourceTree = "<group>"; };
 		438C3CA82C1AC79D00B48029 /* run.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = run.pb.swift; sourceTree = "<group>"; };
 		438C3CA92C1AC79D00B48029 /* run.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = run.proto; sourceTree = "<group>"; };
@@ -178,6 +178,7 @@
 		438C3C782C1A8EB200B48029 = {
 			isa = PBXGroup;
 			children = (
+				43291ACD2C2934D8001F1E83 /* logger.swift */,
 				438C3CB32C1AC79D00B48029 /* escrow */,
 				438C3C832C1A8EB200B48029 /* EscrowTestApp */,
 				438C3C822C1A8EB200B48029 /* Products */,
@@ -220,8 +221,7 @@
 		438C3CA62C1AC79D00B48029 /* dataflow_functions */ = {
 			isa = PBXGroup;
 			children = (
-				438C3CA52C1AC79D00B48029 /* wrapper.swift */,
-				43291ACD2C2934D8001F1E83 /* logger.swift */,
+				438C3CA52C1AC79D00B48029 /* DataflowFunctions.swift */,
 			);
 			path = dataflow_functions;
 			sourceTree = "<group>";
@@ -357,7 +357,7 @@
 			files = (
 				438C3CD32C1AC79D00B48029 /* run.pb.swift in Sources */,
 				438C3C872C1A8EB200B48029 /* ContentView.swift in Sources */,
-				438C3CD12C1AC79D00B48029 /* wrapper.swift in Sources */,
+				438C3CD12C1AC79D00B48029 /* DataflowFunctions.swift in Sources */,
 				438C3CDA2C1AC79D00B48029 /* photo.swift in Sources */,
 				432D3D642C1ACA2000DE8B92 /* SQLiteParser.swift in Sources */,
 				43291ACE2C2934D8001F1E83 /* logger.swift in Sources */,
