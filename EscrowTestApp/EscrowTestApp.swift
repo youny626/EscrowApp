@@ -24,8 +24,9 @@ struct EscrowTestApp: App {
             
             let query = "SELECT asset FROM Photos WHERE mediaType == 'image' ORDER BY creationDate LIMIT 2"
             
-            let res = await escrow.run(query, dataflowFunctionName: "testPhotoRemote", serverType: .standard) as! Data
-            
+//            let res = await escrow.run(query, dataflowFunctionName: "testPhotoRemote", serverType: .standard) as! Data
+            let res = await escrow.run(query, dataflowFunctionName: "classifyImages", serverType: .standard) as! Data
+
             print(String(decoding: res, as: UTF8.self))
         }
         
