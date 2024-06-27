@@ -1,19 +1,26 @@
 import Foundation
-import AppKit
 import TabularData
+
+#if canImport(AppKit)
+import AppKit
+//typealias PlatformImage = NSImage
+#elseif canImport(UIKit)
+import UIKit
+//typealias PlatformImage = UIImage
+#endif
 
 fileprivate var predictionResults: String = ""
 
 func classifyImages(_ success: Bool, _ df: DataFrame?) -> Data? {
-    var images : Array<NSImage> = Array<NSImage>()
+    var images : Array<PlatformImage> = Array<PlatformImage>()
     
     if success {
         if let df = df {
 //            print(df)
             images = df["asset"].map{
-                $0 as! NSImage
+                $0 as! PlatformImage
             }
-//            print(images.count)
+            print("Number of images: \(images.count)")
 //            print(images.first!.isValid)
 //            print(images.first!.size)
             let imagePredictor = ImagePredictor()

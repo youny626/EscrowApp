@@ -375,6 +375,8 @@ class Escrow: NSObject {
                     fatalError("need to specify function name")
                 }
                 
+                startTime = CFAbsoluteTimeGetCurrent()
+                
                 let group = PlatformSupport.makeEventLoopGroup(loopCount: 1)
                 defer {
                     try? group.syncShutdownGracefully()
@@ -432,6 +434,9 @@ class Escrow: NSObject {
                 print("sending request to server")
                 res = try await client.runFunction(params)
                 
+                timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
+                print("Time elapsed for running dataflowFunction remotely: \(timeElapsed) s.")
+                
                 return res!.result
 
                 // client.channel.close()
@@ -452,7 +457,7 @@ class Escrow: NSObject {
                 let res = await dataflowFunction(true, df)
                 
                 timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-                print("Time elapsed for running dataflowFunction: \(timeElapsed) s.")
+                print("Time elapsed for running dataflowFunction on device: \(timeElapsed) s.")
                 
                 return res
             }
@@ -467,7 +472,7 @@ class Escrow: NSObject {
     private func getServerConfig(server: ServerType) -> [String: Any] {
         switch server {
         case .standard:
-            return ["IP": "127.0.0.1", "port": 1234]
+            return ["IP": "172.16.105.10", "port": 1234]
         }
     }
     

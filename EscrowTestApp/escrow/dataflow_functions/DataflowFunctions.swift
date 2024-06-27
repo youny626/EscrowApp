@@ -1,6 +1,13 @@
 import Foundation
 import TabularData
+
+#if canImport(AppKit)
 import AppKit
+//typealias PlatformImage = NSImage
+#elseif canImport(UIKit)
+import UIKit
+//typealias PlatformImage = UIImage
+#endif
 
 struct DataflowFunction {
     var function: DataflowFunctionType
@@ -21,17 +28,19 @@ var DataflowFunctions: [DataflowFunction] =
 
 func testPhotoRemote(_ success: Bool, _ df: DataFrame?) -> Data? {
     
-    var images : Array<NSImage> = Array<NSImage>()
+    var images : Array<PlatformImage> = Array<PlatformImage>()
     
     if success {
         if let df = df {
             print(df)
             images = df["asset"].map{
-                $0 as! NSImage
+                $0 as! PlatformImage
             }
             print(images.count)
+            #if canImport(AppKit)
             print(images.first!.isValid)
             print(images.first!.size)
+            #endif
         }
     }
     else {

@@ -1,8 +1,15 @@
 import Foundation
 import TabularData
 import Photos
-import AppKit
 import DuckDB
+
+#if canImport(AppKit)
+import AppKit
+typealias PlatformImage = NSImage
+#elseif canImport(UIKit)
+import UIKit
+typealias PlatformImage = UIImage
+#endif
 
 extension PHAssetMediaType {
     var description : String {
@@ -21,9 +28,9 @@ extension PHAssetMediaType {
     }
 }
 
-func getAllPhotos() -> Array<NSImage> {
+func getAllPhotos() -> Array<PlatformImage> {
     
-    var images : Array<NSImage> = Array<NSImage>()
+    var images : Array<PlatformImage> = Array<PlatformImage>()
     
     let allPhotosOptions = PHFetchOptions()
     allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
@@ -49,9 +56,35 @@ extension Escrow {
     
     func initPhotoTable() {
         
-        let allPhotosOptions = PHFetchOptions()
-        //        allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
-        let allPhotos = PHAsset.fetchAssets(with: allPhotosOptions)
+        PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
+            switch status {
+            case .notDetermined:
+                // The user hasn't determined this app's access.
+                fatalError("notDetermined")
+            case .restricted:
+                // The system restricted this app's access.
+                fatalError("restricted")
+            case .denied:
+                // The user explicitly denied this app's access.
+                fatalError("denied")
+            case .authorized:
+                // The user authorized this app to access Photos data.
+                break
+            case .limited:
+                // The user authorized this app for limited Photos access.
+                break
+            @unknown default:
+                fatalError()
+            }
+        }
+        
+        let fetchOptions = PHFetchOptions()
+        let albumName = "escrowTest"
+        fetchOptions.predicate = NSPredicate(format: "title = %@", albumName)
+        let resultCollections = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .albumRegular,     options: fetchOptions)
+        let allPhotos: PHFetchResult = PHAsset.fetchAssets(in: resultCollections.firstObject!, options: nil)
+        //                options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+//        let allPhotos = PHAsset.fetchAssets(with: fetchOptions)
         
         var insertString = "INSERT INTO Photos VALUES "
         
@@ -126,7 +159,11 @@ extension Escrow {
             case .image:
                 //                assetCol.append(asset.getImage()!)
                 if storeAsString {
+                    #if canImport(AppKit)
                     assetCol[idx] = asset.getImage()!.tiffRepresentation!.base64EncodedString()
+                    #elseif canImport(UIKit)
+                    assetCol[idx] = asset.getImage()!.pngData()!.base64EncodedString()
+                    #endif
                 } else {
                     assetCol[idx] = asset.getImage()
                 }
@@ -149,12 +186,12 @@ extension Escrow {
 
 extension PHAsset {
     
-    // TODO: UIKit (iPhone) defines UIImage and AppKit (Mac OS X) defines NSImage, so it should return either depending on device
-    func getImage() -> NSImage? {
+    // TODO: UIKit (iPhone) defines UIImage and AppKit (Mac OS X) defines PlatformImage, so it should return either depending on device
+    func getImage() -> PlatformImage? {
         let manager = PHCachingImageManager.default()
         let option = PHImageRequestOptions()
         option.isSynchronous = true
-        var img: NSImage? = NSImage()
+        var img: PlatformImage? = PlatformImage()
         manager.requestImage(for: self,
                              targetSize: CGSize(width: self.pixelWidth, height: self.pixelHeight),
                              contentMode: .default,
@@ -184,18 +221,18 @@ extension PHAsset {
     }
 }
 
-func testPhoto(_ success: Bool, _ df: DataFrame?) -> Array<NSImage> {
+func testPhoto(_ success: Bool, _ df: DataFrame?) -> Array<PlatformImage> {
     
     let startTime = CFAbsoluteTimeGetCurrent()
     
-    var images : Array<NSImage> = Array<NSImage>()
+    var images : Array<PlatformImage> = Array<PlatformImage>()
     
     if success {
         if let df = df {
             //            print("testPhoto")
             //            print("\(df)")
             
-            images = df["asset"].map{$0 as! NSImage}
+            images = df["asset"].map{$0 as! PlatformImage}
             
             //            for row in df.rows {
             //                let asset = row["asset"]
@@ -203,7 +240,7 @@ func testPhoto(_ success: Bool, _ df: DataFrame?) -> Array<NSImage> {
             ////                let creationDate = row["creationDate"] as! Date
             //
             //                if type == "image" {
-            //                    let image = asset as! NSImage
+            //                    let image = asset as! PlatformImage
             ////                    print("image size: \(image.size)), creationDate: \(creationDate.formatted())")
             //                    images.append(image)
             //                }
@@ -215,7 +252,7 @@ func testPhoto(_ success: Bool, _ df: DataFrame?) -> Array<NSImage> {
             //            let type = df["mediaType"].first as! String
             //
             //            if type == "image" {
-            //                let image = asset as! NSImage
+            //                let image = asset as! PlatformImage
             //                print("image size: \(image.size))")
             //                return image.tiffRepresentation!
             //            }

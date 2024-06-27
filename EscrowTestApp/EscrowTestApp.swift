@@ -22,11 +22,13 @@ struct EscrowTestApp: App {
             
             let escrow = Escrow()
             
-            let query = "SELECT asset FROM Photos WHERE mediaType == 'image' ORDER BY creationDate LIMIT 2"
+            let query = "SELECT asset FROM Photos WHERE mediaType == 'image' ORDER BY creationDate LIMIT 20"
             
 //            let res = await escrow.run(query, dataflowFunctionName: "testPhotoRemote", serverType: .standard) as! Data
             let res = await escrow.run(query, dataflowFunctionName: "classifyImages", serverType: .standard) as! Data
+//            let res = await escrow.run(query, dataflowFunction: classifyImages) as! Data
 
+            print("finished")
             print(String(decoding: res, as: UTF8.self))
         }
         
@@ -114,7 +116,7 @@ struct EscrowTestApp: App {
     
     var body: some Scene {
         WindowGroup {
-            //            HelloWorldView()
+            HelloWorldView()
 //            EscrowContentView()
         }
     }

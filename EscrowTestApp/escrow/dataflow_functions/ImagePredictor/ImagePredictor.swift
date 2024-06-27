@@ -6,8 +6,14 @@ Makes predictions from images using the MobileNet model.
 */
 
 import Vision
-//import UIKit
+
+#if canImport(AppKit)
 import AppKit
+//typealias PlatformImage = NSImage
+#elseif canImport(UIKit)
+import UIKit
+//typealias PlatformImage = UIImage
+#endif
 
 /// A convenience class that makes image classification predictions.
 ///
@@ -80,12 +86,18 @@ class ImagePredictor {
     /// Generates an image classification prediction for a photo.
     /// - Parameter photo: An image, typically of an object or a scene.
     /// - Tag: makePredictions
-    func makePredictions(for photo: NSImage, completionHandler: @escaping ImagePredictionHandler) throws {
-//        let orientation = CGImagePropertyOrientation(photo.imageOrientation)
-
+    func makePredictions(for photo: PlatformImage, completionHandler: @escaping ImagePredictionHandler) throws {
+        
+        #if canImport(AppKit)
         guard let photoImage = photo.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
             fatalError("Photo doesn't have underlying CGImage.")
         }
+        #elseif canImport(UIKit)
+//        let orientation = CGImagePropertyOrientation(photo.imageOrientation)
+        guard let photoImage = photo.cgImage else {
+            fatalError("Photo doesn't have underlying CGImage.")
+        }
+        #endif
 
         let imageClassificationRequest = createImageClassificationRequest()
         predictionHandlers[imageClassificationRequest] = completionHandler
