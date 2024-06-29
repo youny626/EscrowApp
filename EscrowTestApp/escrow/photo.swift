@@ -11,6 +11,16 @@ import UIKit
 typealias PlatformImage = UIImage
 #endif
 
+extension CGImage {
+    var pngData: Data? {
+        guard let mutableData = CFDataCreateMutable(nil, 0),
+            let destination = CGImageDestinationCreateWithData(mutableData, "public.png" as CFString, 1, nil) else { return nil }
+        CGImageDestinationAddImage(destination, self, nil)
+        guard CGImageDestinationFinalize(destination) else { return nil }
+        return mutableData as Data
+    }
+}
+
 extension PHAssetMediaType {
     var description : String {
         switch self {
@@ -163,6 +173,7 @@ extension Escrow {
                     assetCol[idx] = asset.getImage()!.tiffRepresentation!.base64EncodedString()
                     #elseif canImport(UIKit)
                     assetCol[idx] = asset.getImage()!.pngData()!.base64EncodedString()
+//                    assetCol[idx] = asset.getImage()!.cgImage?.pngData?.base64EncodedString()
                     #endif
                 } else {
                     assetCol[idx] = asset.getImage()

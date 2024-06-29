@@ -44,7 +44,7 @@ func classifyImages(_ success: Bool, _ df: DataFrame?) -> Data? {
     }
     
 //    return nil
-    print(predictionResults)
+//    print(predictionResults)
     return Data(predictionResults.utf8)
 }
 

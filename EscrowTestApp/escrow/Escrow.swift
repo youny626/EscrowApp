@@ -4,6 +4,8 @@ import GRPC
 import DuckDB
 import CoreLocation
 import NIOSSL
+import NIOCore
+import NIOPosix
 
 //typealias DataflowFunctionType<T: Codable> = (_ success: Bool, _ df: DataFrame?) -> T
 
@@ -378,6 +380,7 @@ class Escrow: NSObject {
                 startTime = CFAbsoluteTimeGetCurrent()
                 
                 let group = PlatformSupport.makeEventLoopGroup(loopCount: 1)
+//                let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
                 defer {
                     try? group.syncShutdownGracefully()
                 }
@@ -385,6 +388,10 @@ class Escrow: NSObject {
                 let serverConfig = getServerConfig(server: serverType)
                 
                 let channel: GRPCChannel
+                
+                let keepalive = ClientConnectionKeepalive(
+                  timeout: .seconds(60)
+                )
                 
                 if use_tls {
                                 
@@ -399,14 +406,20 @@ class Escrow: NSObject {
                         target: .host(serverConfig["IP"] as! String, port: serverConfig["port"] as! Int),
                         transportSecurity: .tls(clientTLSConfiguration),
                         eventLoopGroup: group
-                    )
+                    ) {
+                        // Configure keepalive.
+                        $0.keepalive = keepalive
+                      }
                     
                   } else {
                       channel = try GRPCChannelPool.with(
                           target: .host(serverConfig["IP"] as! String, port: serverConfig["port"] as! Int),
                           transportSecurity: .plaintext,
                           eventLoopGroup: group
-                      )
+                      ) {
+                          // Configure keepalive.
+                          $0.keepalive = keepalive
+                        }
                   }
                 
             
@@ -414,6 +427,7 @@ class Escrow: NSObject {
                     try? channel.close().wait()
                 }
                 
+//                let client = RunNIOClient(channel: channel)
                 let client = RunAsyncClient(channel: channel)
                 
 //                let client = try createClient(server: serverType)
@@ -433,6 +447,7 @@ class Escrow: NSObject {
 //                }
                 print("sending request to server")
                 res = try await client.runFunction(params)
+//                res = try await client.runFunction(params).response.get()                
                 
                 timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
                 print("Time elapsed for running dataflowFunction remotely: \(timeElapsed) s.")

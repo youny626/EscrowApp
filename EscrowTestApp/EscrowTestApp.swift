@@ -18,19 +18,72 @@ struct EscrowTestApp: App {
     
     init() {
         
+//        let filename_on_device = getDocumentsDirectory().appendingPathComponent("classify_images_on_device_100.txt")
+        let filename_remote = getDocumentsDirectory().appendingPathComponent("classify_images_remote_100.txt")
+        
+//        do {
+////            try FileManager.default.removeItem(at: filename_on_device)
+//            try FileManager.default.removeItem(at: filename_remote)
+//        } catch let error as NSError {
+//            print("Error: \(error.domain)")
+//        }
+                                
         Task {
-            
-            let escrow = Escrow()
-            
-            let query = "SELECT asset FROM Photos WHERE mediaType == 'image' ORDER BY creationDate LIMIT 20"
-            
-//            let res = await escrow.run(query, dataflowFunctionName: "testPhotoRemote", serverType: .standard) as! Data
-            let res = await escrow.run(query, dataflowFunctionName: "classifyImages", serverType: .standard) as! Data
-//            let res = await escrow.run(query, dataflowFunction: classifyImages) as! Data
-
-            print("finished")
-            print(String(decoding: res, as: UTF8.self))
+//            for i in 0..<10 {
+                
+                //                @MainActor in
+                
+                //                try await Task.sleep(nanoseconds: UInt64(1 * Double(NSEC_PER_SEC)))
+                
+                let escrow = Escrow()
+                
+                let startTime = CFAbsoluteTimeGetCurrent()
+                
+                let query = "SELECT asset FROM Photos WHERE mediaType == 'image' ORDER BY creationDate"
+                
+                //            let res = await escrow.run(query, dataflowFunctionName: "testPhotoRemote", serverType: .standard) as! Data
+                let res = await escrow.run(query, dataflowFunctionName: "classifyImages", serverType: .standard) as! Data
+//                let res = await escrow.run(query, dataflowFunction: classifyImages) as! Data
+                
+                let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
+                print("Time elapsed: \(timeElapsed) s.")
+                
+                let resToWrite = "\(timeElapsed)\n"
+                log(filename_remote, resToWrite)
+                
+                print("finished")
+                print(String(decoding: res, as: UTF8.self))
+//            }
         }
+        
+//        for i in 0..<10 {
+            
+//            Task {
+//                
+//                //                @MainActor in
+//                
+//                //                try await Task.sleep(nanoseconds: UInt64(1 * Double(NSEC_PER_SEC)))
+//                
+//                let escrow = Escrow()
+//                
+//                let startTime = CFAbsoluteTimeGetCurrent()
+//                
+//                let query = "SELECT asset FROM Photos WHERE mediaType == 'image' ORDER BY creationDate"
+//                
+//                //            let res = await escrow.run(query, dataflowFunctionName: "testPhotoRemote", serverType: .standard) as! Data
+////                let res = await escrow.run(query, dataflowFunctionName: "classifyImages", serverType: .standard) as! Data
+//                let res = await escrow.run(query, dataflowFunction: classifyImages) as! Data
+//                
+//                let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
+//                print("Time elapsed: \(timeElapsed) s.")
+//                
+//                let resToWrite = "\(timeElapsed)\n"
+//                log(filename_on_device, resToWrite)
+//                
+//                print("finished")
+//                print(String(decoding: res, as: UTF8.self))
+//            }
+//        }
         
 //        let filename = getDocumentsDirectory().appendingPathComponent("contact_eval.txt")
 //        let filename_bs = getDocumentsDirectory().appendingPathComponent("contact_eval_bs.txt")
