@@ -376,9 +376,7 @@ class Escrow: NSObject {
                 guard let dataflowFunctionName = dataflowFunctionName else {
                     fatalError("need to specify function name")
                 }
-                
-                startTime = CFAbsoluteTimeGetCurrent()
-                
+                                
                 let group = PlatformSupport.makeEventLoopGroup(loopCount: 1)
 //                let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
                 defer {
@@ -390,7 +388,7 @@ class Escrow: NSObject {
                 let channel: GRPCChannel
                 
                 let keepalive = ClientConnectionKeepalive(
-                  timeout: .seconds(60)
+                  timeout: .seconds(100)
                 )
                 
                 if use_tls {
@@ -446,11 +444,23 @@ class Escrow: NSObject {
 //                    res = try await client.runFunction(params)
 //                }
                 print("sending request to server")
+                
+                startTime = CFAbsoluteTimeGetCurrent()
+                
                 res = try await client.runFunction(params)
 //                res = try await client.runFunction(params).response.get()                
                 
                 timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
                 print("Time elapsed for running dataflowFunction remotely: \(timeElapsed) s.")
+                let filename_remote = getDocumentsDirectory().appendingPathComponent("classify_images_run_function_grpc_1.txt")
+//                do {
+//        //            try FileManager.default.removeItem(at: filename_on_device)
+//                    try FileManager.default.removeItem(at: filename_remote)
+//                } catch let error as NSError {
+//                    print("Error: \(error.domain)")
+//                }
+                let resToWrite = "\(timeElapsed)\n"
+                log(filename_remote, resToWrite)
                 
                 return res!.result
 
@@ -473,6 +483,9 @@ class Escrow: NSObject {
                 
                 timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
                 print("Time elapsed for running dataflowFunction on device: \(timeElapsed) s.")
+                let filename_device = getDocumentsDirectory().appendingPathComponent("classify_images_run_function_device_1.txt")
+                let resToWrite = "\(timeElapsed)\n"
+                log(filename_device, resToWrite)
                 
                 return res
             }
@@ -487,7 +500,7 @@ class Escrow: NSObject {
     private func getServerConfig(server: ServerType) -> [String: Any] {
         switch server {
         case .standard:
-            return ["IP": "172.16.105.10", "port": 1234]
+            return ["IP": "172.16.105.11", "port": 1234]
         }
     }
     

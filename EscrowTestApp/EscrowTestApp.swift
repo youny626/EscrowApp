@@ -8,18 +8,13 @@
 import SwiftUI
 import TabularData
 
-func getDocumentsDirectory() -> URL {
-    let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-    return paths[0]
-}
-
 @main
 struct EscrowTestApp: App {
     
     init() {
         
-//        let filename_on_device = getDocumentsDirectory().appendingPathComponent("classify_images_on_device_100.txt")
-        let filename_remote = getDocumentsDirectory().appendingPathComponent("classify_images_remote_100.txt")
+        let filename_on_device = getDocumentsDirectory().appendingPathComponent("classify_images_on_device_10.txt")
+//        let filename_remote = getDocumentsDirectory().appendingPathComponent("classify_images_remote_1.txt")
         
 //        do {
 ////            try FileManager.default.removeItem(at: filename_on_device)
@@ -41,18 +36,18 @@ struct EscrowTestApp: App {
                 
                 let query = "SELECT asset FROM Photos WHERE mediaType == 'image' ORDER BY creationDate"
                 
-                //            let res = await escrow.run(query, dataflowFunctionName: "testPhotoRemote", serverType: .standard) as! Data
-                let res = await escrow.run(query, dataflowFunctionName: "classifyImages", serverType: .standard) as! Data
-//                let res = await escrow.run(query, dataflowFunction: classifyImages) as! Data
+//                let res = await escrow.run(query, dataflowFunctionName: "classifyImages", serverType: .standard) as! Data
+                let res = await escrow.run(query, dataflowFunction: classifyImages) as! Data
                 
                 let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
                 print("Time elapsed: \(timeElapsed) s.")
                 
                 let resToWrite = "\(timeElapsed)\n"
-                log(filename_remote, resToWrite)
+//                log(filename_remote, resToWrite)
+                log(filename_on_device, resToWrite)
                 
                 print("finished")
-                print(String(decoding: res, as: UTF8.self))
+//                print(String(decoding: res, as: UTF8.self))
 //            }
         }
         
