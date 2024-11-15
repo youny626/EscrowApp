@@ -1,10 +1,3 @@
-//
-//  EscrowTestAppApp.swift
-//  EscrowTestApp
-//
-//  Created by Zhiru Zhu on 6/12/24.
-//
-
 import SwiftUI
 import TabularData
 
