@@ -1,10 +1,3 @@
-//
-//  HelloWorldView.swift
-//  EscrowTestApp
-//
-//  Created by Zhiru Zhu on 6/19/24.
-//
-
 import SwiftUI
 
 struct HelloWorldView: View {
