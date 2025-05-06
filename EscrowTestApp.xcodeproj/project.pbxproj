@@ -38,13 +38,11 @@
 		432D3D6C2C1ACA2000DE8B92 /* SQLiteLexer.g4 in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D542C1ACA2000DE8B92 /* SQLiteLexer.g4 */; };
 		432D3D6D2C1ACA2000DE8B92 /* SQLiteParser.g4 in Resources */ = {isa = PBXBuildFile; fileRef = 432D3D552C1ACA2000DE8B92 /* SQLiteParser.g4 */; };
 		432D3D6F2C1AD8D800DE8B92 /* EscrowContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D3D6E2C1AD8D800DE8B92 /* EscrowContentView.swift */; };
-		432D3D732C1AFA0A00DE8B92 /* SwiftLocation in Frameworks */ = {isa = PBXBuildFile; productRef = 432D3D722C1AFA0A00DE8B92 /* SwiftLocation */; };
 		438C3C852C1A8EB200B48029 /* EscrowTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3C842C1A8EB200B48029 /* EscrowTestApp.swift */; };
 		438C3C872C1A8EB200B48029 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3C862C1A8EB200B48029 /* ContentView.swift */; };
 		438C3C892C1A8EB300B48029 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 438C3C882C1A8EB300B48029 /* Assets.xcassets */; };
 		438C3C8D2C1A8EB300B48029 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 438C3C8C2C1A8EB300B48029 /* Preview Assets.xcassets */; };
 		438C3C942C1A8EFE00B48029 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3C932C1A8EFE00B48029 /* LocationManager.swift */; };
-		438C3C972C1AC61900B48029 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 438C3C962C1AC61900B48029 /* GRPC */; };
 		438C3C9A2C1AC6C300B48029 /* Antlr4 in Frameworks */ = {isa = PBXBuildFile; productRef = 438C3C992C1AC6C300B48029 /* Antlr4 */; };
 		438C3CA42C1AC71C00B48029 /* DuckDB in Frameworks */ = {isa = PBXBuildFile; productRef = 438C3CA32C1AC71C00B48029 /* DuckDB */; };
 		438C3CD12C1AC79D00B48029 /* DataflowFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3CA52C1AC79D00B48029 /* DataflowFunctions.swift */; };
@@ -55,6 +53,8 @@
 		438C3CD72C1AC79D00B48029 /* Listener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3CAF2C1AC79D00B48029 /* Listener.swift */; };
 		438C3CD82C1AC79D00B48029 /* location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3CB02C1AC79D00B48029 /* location.swift */; };
 		438C3CDA2C1AC79D00B48029 /* photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C3CB22C1AC79D00B48029 /* photo.swift */; };
+		43B92B022DA4BDB8003C73B1 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 43B92B012DA4BDB8003C73B1 /* GRPC */; };
+		43B92B052DA4BEE7003C73B1 /* SwiftLocation in Frameworks */ = {isa = PBXBuildFile; productRef = 43B92B042DA4BEE7003C73B1 /* SwiftLocation */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,10 +117,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				438C3C972C1AC61900B48029 /* GRPC in Frameworks */,
+				43B92B022DA4BDB8003C73B1 /* GRPC in Frameworks */,
 				438C3C9A2C1AC6C300B48029 /* Antlr4 in Frameworks */,
 				438C3CA42C1AC71C00B48029 /* DuckDB in Frameworks */,
-				432D3D732C1AFA0A00DE8B92 /* SwiftLocation in Frameworks */,
+				43B92B052DA4BEE7003C73B1 /* SwiftLocation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +208,7 @@
 				43291ACD2C2934D8001F1E83 /* logger.swift */,
 				438C3CB32C1AC79D00B48029 /* escrow */,
 				438C3C832C1A8EB200B48029 /* EscrowTestApp */,
+				43B92AF72DA3A8B4003C73B1 /* Frameworks */,
 				438C3C822C1A8EB200B48029 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -284,6 +285,13 @@
 			path = EscrowTestApp/escrow;
 			sourceTree = "<group>";
 		};
+		43B92AF72DA3A8B4003C73B1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -301,10 +309,10 @@
 			);
 			name = EscrowTestApp;
 			packageProductDependencies = (
-				438C3C962C1AC61900B48029 /* GRPC */,
 				438C3C992C1AC6C300B48029 /* Antlr4 */,
 				438C3CA32C1AC71C00B48029 /* DuckDB */,
-				432D3D722C1AFA0A00DE8B92 /* SwiftLocation */,
+				43B92B012DA4BDB8003C73B1 /* GRPC */,
+				43B92B042DA4BEE7003C73B1 /* SwiftLocation */,
 			);
 			productName = EscrowTestApp;
 			productReference = 438C3C812C1A8EB200B48029 /* EscrowTestApp.app */;
@@ -318,7 +326,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					438C3C802C1A8EB200B48029 = {
 						CreatedOnToolsVersion = 15.4;
@@ -339,7 +347,7 @@
 				438C3C982C1AC6C300B48029 /* XCRemoteSwiftPackageReference "antlr4" */,
 				438C3C9F2C1AC6DB00B48029 /* XCLocalSwiftPackageReference "../antlr4-swift" */,
 				438C3CA22C1AC71C00B48029 /* XCRemoteSwiftPackageReference "duckdb-swift" */,
-				432D3D712C1AFA0A00DE8B92 /* XCRemoteSwiftPackageReference "SwiftLocation" */,
+				43B92B032DA4BEE7003C73B1 /* XCRemoteSwiftPackageReference "SwiftLocation" */,
 			);
 			productRefGroup = 438C3C822C1A8EB200B48029 /* Products */;
 			projectDirPath = "";
@@ -449,7 +457,9 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 3D7CL937LY;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -510,7 +520,9 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 3D7CL937LY;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -537,8 +549,8 @@
 				CODE_SIGN_ENTITLEMENTS = EscrowTestApp/EscrowTestApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"EscrowTestApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 3D7CL937LY;
 				ENABLE_HARDENED_RUNTIME = YES;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
@@ -557,10 +569,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = test.EscrowTestApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -580,8 +592,8 @@
 				CODE_SIGN_ENTITLEMENTS = EscrowTestApp/EscrowTestApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"EscrowTestApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 3D7CL937LY;
 				ENABLE_HARDENED_RUNTIME = YES;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
@@ -600,10 +612,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = test.EscrowTestApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -646,20 +658,12 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		432D3D712C1AFA0A00DE8B92 /* XCRemoteSwiftPackageReference "SwiftLocation" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/malcommac/SwiftLocation.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
-			};
-		};
 		438C3C952C1AC61900B48029 /* XCRemoteSwiftPackageReference "grpc-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/grpc/grpc-swift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.23.0;
+				minimumVersion = 1.0.0;
 			};
 		};
 		438C3C982C1AC6C300B48029 /* XCRemoteSwiftPackageReference "antlr4" */ = {
@@ -667,7 +671,7 @@
 			repositoryURL = "https://github.com/antlr/antlr4";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.13.1;
+				minimumVersion = 4.13.2;
 			};
 		};
 		438C3CA22C1AC71C00B48029 /* XCRemoteSwiftPackageReference "duckdb-swift" */ = {
@@ -675,22 +679,20 @@
 			repositoryURL = "https://github.com/duckdb/duckdb-swift";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.0;
+				minimumVersion = 1.0.0;
+			};
+		};
+		43B92B032DA4BEE7003C73B1 /* XCRemoteSwiftPackageReference "SwiftLocation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/malcommac/SwiftLocation.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		432D3D722C1AFA0A00DE8B92 /* SwiftLocation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 432D3D712C1AFA0A00DE8B92 /* XCRemoteSwiftPackageReference "SwiftLocation" */;
-			productName = SwiftLocation;
-		};
-		438C3C962C1AC61900B48029 /* GRPC */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 438C3C952C1AC61900B48029 /* XCRemoteSwiftPackageReference "grpc-swift" */;
-			productName = GRPC;
-		};
 		438C3C992C1AC6C300B48029 /* Antlr4 */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 438C3C982C1AC6C300B48029 /* XCRemoteSwiftPackageReference "antlr4" */;
@@ -700,6 +702,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 438C3CA22C1AC71C00B48029 /* XCRemoteSwiftPackageReference "duckdb-swift" */;
 			productName = DuckDB;
+		};
+		43B92B012DA4BDB8003C73B1 /* GRPC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 438C3C952C1AC61900B48029 /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = GRPC;
+		};
+		43B92B042DA4BEE7003C73B1 /* SwiftLocation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 43B92B032DA4BEE7003C73B1 /* XCRemoteSwiftPackageReference "SwiftLocation" */;
+			productName = SwiftLocation;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

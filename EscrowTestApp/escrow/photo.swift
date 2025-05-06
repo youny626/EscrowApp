@@ -92,7 +92,8 @@ extension Escrow {
         let albumName = "escrowTest"
         fetchOptions.predicate = NSPredicate(format: "title = %@", albumName)
         let resultCollections = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .albumRegular,     options: fetchOptions)
-        let allPhotos: PHFetchResult = PHAsset.fetchAssets(in: resultCollections.firstObject!, options: nil)
+        let empty = PHAssetCollection()
+        let allPhotos: PHFetchResult = PHAsset.fetchAssets(in: resultCollections.firstObject ?? empty, options: nil)
         //                options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
 //        let allPhotos = PHAsset.fetchAssets(with: fetchOptions)
         

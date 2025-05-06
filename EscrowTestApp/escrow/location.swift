@@ -174,7 +174,7 @@ extension Escrow {
     }
 }
 //
-extension Escrow: CLLocationManagerDelegate {
+extension Escrow: @preconcurrency CLLocationManagerDelegate {
         
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         print(#function)

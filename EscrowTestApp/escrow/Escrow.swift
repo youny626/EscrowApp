@@ -62,8 +62,8 @@ class Escrow: NSObject {
         
         let startTime = CFAbsoluteTimeGetCurrent()
 
-//        initLocationTable()
-//        initContactTable()
+        initLocationTable()
+        initContactTable()
         initPhotoTable()
         
         let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
@@ -452,15 +452,14 @@ class Escrow: NSObject {
                 
                 timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
                 print("Time elapsed for running dataflowFunction remotely: \(timeElapsed) s.")
-                let filename_remote = getDocumentsDirectory().appendingPathComponent("classify_images_run_function_grpc_1.txt")
-//                do {
-//        //            try FileManager.default.removeItem(at: filename_on_device)
-//                    try FileManager.default.removeItem(at: filename_remote)
-//                } catch let error as NSError {
-//                    print("Error: \(error.domain)")
-//                }
-                let resToWrite = "\(timeElapsed)\n"
-                log(filename_remote, resToWrite)
+//                let filename_remote = getDocumentsDirectory().appendingPathComponent("classify_images_run_function_grpc_1.txt")
+////                do {
+////                    try FileManager.default.removeItem(at: filename_remote)
+////                } catch let error as NSError {
+////                    print("Error: \(error.domain)")
+////                }
+//                let resToWrite = "\(timeElapsed)\n"
+//                log(filename_remote, resToWrite)
                 
                 return res!.result
 
@@ -483,9 +482,9 @@ class Escrow: NSObject {
                 
                 timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
                 print("Time elapsed for running dataflowFunction on device: \(timeElapsed) s.")
-                let filename_device = getDocumentsDirectory().appendingPathComponent("classify_images_run_function_device_1.txt")
-                let resToWrite = "\(timeElapsed)\n"
-                log(filename_device, resToWrite)
+//                let filename_device = getDocumentsDirectory().appendingPathComponent("classify_images_run_function_device_1.txt")
+//                let resToWrite = "\(timeElapsed)\n"
+//                log(filename_device, resToWrite)
                 
                 return res
             }

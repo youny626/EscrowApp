@@ -6,7 +6,10 @@ struct EscrowTestApp: App {
     
     init() {
         
-        let filename_on_device = getDocumentsDirectory().appendingPathComponent("classify_images_on_device_10.txt")
+//        let escrow = Escrow.shared //pre-warm
+//        do {sleep(10)}
+        
+//        let filename_on_device = getDocumentsDirectory().appendingPathComponent("classify_images_on_device_10.txt")
 //        let filename_remote = getDocumentsDirectory().appendingPathComponent("classify_images_remote_1.txt")
         
 //        do {
@@ -16,33 +19,33 @@ struct EscrowTestApp: App {
 //            print("Error: \(error.domain)")
 //        }
                                 
-        Task {
-//            for i in 0..<10 {
-                
-                //                @MainActor in
-                
-                //                try await Task.sleep(nanoseconds: UInt64(1 * Double(NSEC_PER_SEC)))
-                
-                let escrow = Escrow()
-                
-                let startTime = CFAbsoluteTimeGetCurrent()
-                
-                let query = "SELECT asset FROM Photos WHERE mediaType == 'image' ORDER BY creationDate"
-                
-//                let res = await escrow.run(query, dataflowFunctionName: "classifyImages", serverType: .standard) as! Data
-                let res = await escrow.run(query, dataflowFunction: classifyImages) as! Data
-                
-                let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-                print("Time elapsed: \(timeElapsed) s.")
-                
-                let resToWrite = "\(timeElapsed)\n"
-//                log(filename_remote, resToWrite)
-                log(filename_on_device, resToWrite)
-                
-                print("finished")
-//                print(String(decoding: res, as: UTF8.self))
-//            }
-        }
+//        Task {
+////            for i in 0..<10 {
+//                
+//                //                @MainActor in
+//                
+//                //                try await Task.sleep(nanoseconds: UInt64(1 * Double(NSEC_PER_SEC)))
+//                
+//                let escrow = Escrow()
+//                
+//                let startTime = CFAbsoluteTimeGetCurrent()
+//                
+//                let query = "SELECT asset FROM Photos WHERE mediaType == 'image' ORDER BY creationDate"
+//                
+////                let res = await escrow.run(query, dataflowFunctionName: "classifyImages", serverType: .standard) as! Data
+//                let res = await escrow.run(query, dataflowFunction: classifyImages) as! Data
+//                
+//                let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
+//                print("Time elapsed: \(timeElapsed) s.")
+//                
+//                let resToWrite = "\(timeElapsed)\n"
+////                log(filename_remote, resToWrite)
+//                log(filename_on_device, resToWrite)
+//                
+//                print("finished")
+////                print(String(decoding: res, as: UTF8.self))
+////            }
+//        }
         
 //        for i in 0..<10 {
             
@@ -157,8 +160,8 @@ struct EscrowTestApp: App {
     
     var body: some Scene {
         WindowGroup {
-            HelloWorldView()
-//            EscrowContentView()
+//            HelloWorldView()
+            EscrowContentView()
         }
     }
 }
