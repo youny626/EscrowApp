@@ -13,7 +13,7 @@ struct EscrowContentView: View {
 //    var userLongitude: String {
 //        return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
 //    }
-    let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+//    let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
 
     @State var location: CLLocationCoordinate2D?
     
@@ -98,7 +98,7 @@ struct EscrowContentView: View {
         currentWeather = await Escrow.run(query, dataflowFunction: getCurrentWeather) as? WeatherResponse
         
         let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-        print("Time elapsed \(#function): \(timeElapsed) s.")
+//        print("Time elapsed \(#function): \(timeElapsed) s.")
     }
     
     func getCurrentWeather(_ success: Bool, _ df: DataFrame?) async -> WeatherResponse? {

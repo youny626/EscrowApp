@@ -9,6 +9,21 @@ struct EscrowTestApp: App {
 //        let escrow = Escrow.shared //pre-warm
 //        do {sleep(10)}
         
+        Task {
+            var currentWeather: WeatherResponse? = nil
+            
+            let query = "SELECT longitude, latitude FROM Location ORDER BY timestamp LIMIT 1"
+            
+            while currentWeather == nil {
+                
+                currentWeather = await Escrow.run(query, dataflowFunction: getCurrentWeather) as? WeatherResponse
+            }
+            
+            print(currentWeather)
+
+        }
+        
+        
 //        let filename_on_device = getDocumentsDirectory().appendingPathComponent("classify_images_on_device_10.txt")
 //        let filename_remote = getDocumentsDirectory().appendingPathComponent("classify_images_remote_1.txt")
         
@@ -160,8 +175,8 @@ struct EscrowTestApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            HelloWorldView()
-            EscrowContentView()
+            HelloWorldView()
+//            EscrowContentView()
         }
     }
 }

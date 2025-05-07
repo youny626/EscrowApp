@@ -68,7 +68,7 @@ class Escrow: NSObject {
         
         let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
 //                print(res.count)
-        print("Time elapsed init: \(timeElapsed) s.")
+//        print("Time elapsed init: \(timeElapsed) s.")
         
 //        let resToWrite = "\(timeElapsed)\n"
 //        
@@ -105,7 +105,7 @@ class Escrow: NSObject {
             let result = try shared.connection.query(query)
             
             var timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-            print("Time elapsed for running query: \(timeElapsed) s.")
+//            print("Time elapsed for running query: \(timeElapsed) s.")
             
             startTime = CFAbsoluteTimeGetCurrent()
             
@@ -134,7 +134,7 @@ class Escrow: NSObject {
                         let cast_col = col.cast(to: String.self)
                         
                         let timeElapsed2 = CFAbsoluteTimeGetCurrent() - startTime2
-                        print("Time elapsed for casting col: \(timeElapsed2) s.")
+//                        print("Time elapsed for casting col: \(timeElapsed2) s.")
                         
                         let startTime1 = CFAbsoluteTimeGetCurrent()
                         
@@ -142,14 +142,14 @@ class Escrow: NSObject {
                         let col0 = shared.getAssetsFromIds(ids: cast_col)
                         
                         let timeElapsed1 = CFAbsoluteTimeGetCurrent() - startTime1
-                        print("Time elapsed for getAssetsFromIds: \(timeElapsed1) s.")
+//                        print("Time elapsed for getAssetsFromIds: \(timeElapsed1) s.")
                         
                         let startTime0 = CFAbsoluteTimeGetCurrent()
                         
                         any_col = col0.eraseToAnyColumn()
                         
                         let timeElapsed0 = CFAbsoluteTimeGetCurrent() - startTime0
-                        print("Time elapsed for eraseToAnyColumn: \(timeElapsed0) s.")
+//                        print("Time elapsed for eraseToAnyColumn: \(timeElapsed0) s.")
                         
                     } else {
                         any_col = TabularData.Column(col.cast(to: String.self)).eraseToAnyColumn()
@@ -203,7 +203,7 @@ class Escrow: NSObject {
             let df = DataFrame(columns: result_cols)
             
             timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-            print("Time elapsed for processing query result: \(timeElapsed) s.")
+//            print("Time elapsed for processing query result: \(timeElapsed) s.")
             
             if let serverType = serverType {
                 guard let dataflowFunctionName = dataflowFunctionName else {
@@ -241,7 +241,7 @@ class Escrow: NSObject {
                 let res = await dataflowFunction(true, df)
                 
                 timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-                print("Time elapsed for running dataflowFunction: \(timeElapsed) s.")
+//                print("Time elapsed for running dataflowFunction: \(timeElapsed) s.")
                 
                 return res
             }
@@ -265,7 +265,7 @@ class Escrow: NSObject {
             let result = try connection.query(query)
             
             var timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-            print("Time elapsed for running query: \(timeElapsed) s.")
+//            print("Time elapsed for running query: \(timeElapsed) s.")
             
             startTime = CFAbsoluteTimeGetCurrent()
             
@@ -370,7 +370,7 @@ class Escrow: NSObject {
             let df = DataFrame(columns: result_cols)
             
             timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-            print("Time elapsed for processing query result: \(timeElapsed) s.")
+//            print("Time elapsed for processing query result: \(timeElapsed) s.")
             
             if let serverType = serverType {
                 guard let dataflowFunctionName = dataflowFunctionName else {
@@ -443,7 +443,7 @@ class Escrow: NSObject {
 //                Task.init {
 //                    res = try await client.runFunction(params)
 //                }
-                print("sending request to server")
+//                print("sending request to server")
                 
                 startTime = CFAbsoluteTimeGetCurrent()
                 
@@ -451,7 +451,7 @@ class Escrow: NSObject {
 //                res = try await client.runFunction(params).response.get()                
                 
                 timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-                print("Time elapsed for running dataflowFunction remotely: \(timeElapsed) s.")
+//                print("Time elapsed for running dataflowFunction remotely: \(timeElapsed) s.")
 //                let filename_remote = getDocumentsDirectory().appendingPathComponent("classify_images_run_function_grpc_1.txt")
 ////                do {
 ////                    try FileManager.default.removeItem(at: filename_remote)
@@ -481,7 +481,7 @@ class Escrow: NSObject {
                 let res = await dataflowFunction(true, df)
                 
                 timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-                print("Time elapsed for running dataflowFunction on device: \(timeElapsed) s.")
+//                print("Time elapsed for running dataflowFunction on device: \(timeElapsed) s.")
 //                let filename_device = getDocumentsDirectory().appendingPathComponent("classify_images_run_function_device_1.txt")
 //                let resToWrite = "\(timeElapsed)\n"
 //                log(filename_device, resToWrite)

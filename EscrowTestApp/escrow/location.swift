@@ -3,61 +3,61 @@ import CoreLocation
 import TabularData
 import SwiftLocation
 
-class EscrowLocationManager: NSObject, CLLocationManagerDelegate {
-    
-    let locationManager: CLLocationManager = CLLocationManager()
-    
-    var locations: [CLLocation] = []
-    
-    override init() {
-        
-        super.init()
-                
-        locationManager.delegate = self
-//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
-        }
-        else {
-            print("location service not enabled")
-            locationManager.requestAlwaysAuthorization()
-        }
-    }
-    
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        print(#function)
-        
-        switch manager.authorizationStatus {
-        case .notDetermined:
-            // Request the appropriate authorization based on the needs of the app
-            manager.requestWhenInUseAuthorization()
-            // manager.requestAlwaysAuthorization()
-        case .restricted:
-            print("Sorry, restricted")
-            // Optional: Offer to take user to app's settings screen
-        case .denied:
-            print("Sorry, denied")
-            // Optional: Offer to take user to app's settings screen
-        case .authorizedAlways, .authorizedWhenInUse:
-            // The app has permission so start getting location updates
-            manager.startUpdatingLocation()
-        @unknown default:
-            print("Unknown status")
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        guard let location = locations.last else { return }
-//        lastLocation = location
-        self.locations = locations
-        print(#function, locations)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
-        fatalError(error.localizedDescription)
-    }
-}
+//class EscrowLocationManager: NSObject, CLLocationManagerDelegate {
+//    
+//    let locationManager: CLLocationManager = CLLocationManager()
+//    
+//    var locations: [CLLocation] = []
+//    
+//    override init() {
+//        
+//        super.init()
+//                
+//        locationManager.delegate = self
+////        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//        locationManager.requestAlwaysAuthorization()
+//        if CLLocationManager.locationServicesEnabled() {
+//            locationManager.startUpdatingLocation()
+//        }
+//        else {
+//            print("location service not enabled")
+//            locationManager.requestAlwaysAuthorization()
+//        }
+//    }
+//    
+//    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+//        print(#function)
+//        
+//        switch manager.authorizationStatus {
+//        case .notDetermined:
+//            // Request the appropriate authorization based on the needs of the app
+//            manager.requestWhenInUseAuthorization()
+//            // manager.requestAlwaysAuthorization()
+//        case .restricted:
+//            print("Sorry, restricted")
+//            // Optional: Offer to take user to app's settings screen
+//        case .denied:
+//            print("Sorry, denied")
+//            // Optional: Offer to take user to app's settings screen
+//        case .authorizedAlways, .authorizedWhenInUse:
+//            // The app has permission so start getting location updates
+//            manager.startUpdatingLocation()
+//        @unknown default:
+//            print("Unknown status")
+//        }
+//    }
+//    
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+////        guard let location = locations.last else { return }
+////        lastLocation = location
+//        self.locations = locations
+//        print(#function, locations)
+//    }
+//    
+//    func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
+//        fatalError(error.localizedDescription)
+//    }
+//}
 
 extension Escrow {
     
@@ -174,7 +174,7 @@ extension Escrow {
     }
 }
 //
-extension Escrow: @preconcurrency CLLocationManagerDelegate {
+extension Escrow: CLLocationManagerDelegate {
         
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         print(#function)
